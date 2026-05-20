@@ -2,12 +2,37 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 600,
   "height": 400,
+
   "data": {
     "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/Data/CPI.csv"
   },
-  "mark": "line",
+
+  "transform": [
+    {
+      "calculate": "toNumber(datum.Year)",
+      "as": "YearNum"
+    },
+    {
+      "calculate": "toNumber(datum.CPI)",
+      "as": "CPINum"
+    }
+  ],
+
+  "mark": {
+    "type": "line",
+    "point": true
+  },
+
   "encoding": {
-    "x": {"field": "Year", "type": "ordinal"},
-    "y": {"field": "CPI", "type": "quantitative"}
+    "x": {
+      "field": "YearNum",
+      "type": "quantitative",
+      "title": "Year"
+    },
+    "y": {
+      "field": "CPINum",
+      "type": "quantitative",
+      "title": "CPI"
+    }
   }
 }
