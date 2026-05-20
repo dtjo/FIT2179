@@ -3,6 +3,7 @@
 
   <div id="chart1"></div>
   <div id="chart2"></div>
+  <div id="map"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
@@ -10,10 +11,7 @@
 
   <script>
     vegaEmbed('#chart1', 'js/cpi.json', { actions: false });
+    vegaEmbed('#chart2', 'js/wpi.json', { actions: false });
+    vegaEmbed('#map', 'js/your_map_file.json', { actions: false });
   </script>
-
-  <script>
-    vegaEmbed('#chart2', 'js/wpi.json', {actions:false});
-  </script>
-    
 </body>
