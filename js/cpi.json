@@ -3,7 +3,7 @@
   "width": 600,
   "height": 400,
   "data": {
-    "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/cpi.csv"
+    "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/Data/cpi.csv"
   },
   "transform": [
     {"calculate": "toNumber(datum.Year)", "as": "YearNum"},
