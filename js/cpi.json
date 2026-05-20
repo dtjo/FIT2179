@@ -3,11 +3,23 @@
   "width": 600,
   "height": 400,
   "data": {
-    "url": "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/data/cpi.csv"
+    "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/cpi.csv"
   },
+  "transform": [
+    {"calculate": "toNumber(datum.Year)", "as": "YearNum"},
+    {"calculate": "toNumber(datum.CPI)", "as": "CPI_num"}
+  ],
   "mark": "line",
   "encoding": {
-    "x": {"field": "Year", "type": "ordinal"},
-    "y": {"field": "CPI", "type": "quantitative"}
+    "x": {
+      "field": "YearNum",
+      "type": "quantitative",
+      "title": "Year"
+    },
+    "y": {
+      "field": "CPI_num",
+      "type": "quantitative",
+      "title": "CPI (Index)"
+    }
   }
 }
