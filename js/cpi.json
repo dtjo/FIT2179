@@ -5,21 +5,9 @@
   "data": {
     "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/Data/CPI.csv"
   },
-  "transform": [
-    {"calculate": "toNumber(datum.Year)", "as": "YearNum"},
-    {"calculate": "toNumber(datum.CPI)", "as": "CPI_num"}
-  ],
   "mark": "line",
   "encoding": {
-    "x": {
-      "field": "Year",
-      "type": "quantitative",
-      "title": "Year"
-    },
-    "y": {
-      "field": "CPI",
-      "type": "quantitative",
-      "title": "CPI (Index)"
-    }
+    "x": {"field": "Year", "type": "ordinal"},
+    "y": {"field": "CPI", "type": "quantitative"}
   }
 }
