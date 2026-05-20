@@ -2,6 +2,7 @@
   <h1>Reality Check: $100 Across 10 Years</h1>
 
   <div id="chart1"></div>
+  <div id="chart2"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
@@ -11,8 +12,8 @@
     vegaEmbed('#chart1', 'js/cpi.json', { actions: false });
   </script>
 
-  <div id="chart2"></div>
-    <script>
-        vegaEmbed('#chart2', 'js/wpi.json', {actions:false});
-    </script>
+  <script>
+    vegaEmbed('#chart2', 'js/wpi.json', {actions:false});
+  </script>
+    
 </body>
