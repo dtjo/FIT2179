@@ -16,10 +16,10 @@
 
   "transform": [
     {
-      "lookup": "properties.STE_NAME",
+      "lookup": "properties.STE_NAME16",
       "from": {
         "data": {
-          "url": "Data/CPI.csv"
+          "url": "Data/state_cpi.csv"
         },
         "key": "state",
         "fields": ["CPI"]
