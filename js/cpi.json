@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/data/cpi.csv"
+  },
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "Year", "type": "ordinal"},
+    "y": {"field": "CPI", "type": "quantitative"}
+  }
+}
