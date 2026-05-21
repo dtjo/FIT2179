@@ -19,68 +19,47 @@
   <h1>Reality Check: $100 Across 10 Years</h1>
 
   <div class="vis-container">
-
-    <div class="vis-title">
-      Consumer Price Index (CPI)
+    <div class="vis-title">Consumer Price Index (CPI)</div>
+    <div class="vis-body">
+      <div id="chart1"></div>
+      <div class="description">
+        This visualisation shows the change in Australia's Consumer Price Index over the last decade.
+        The CPI measures the average change in prices paid by consumers for goods and services,
+        serving as a key indicator of inflation and purchasing power over time.
+      </div>
     </div>
-
-    <div id="chart1"></div>
-
-    <div class="description">
-      This visualisation shows the change in Australia's Consumer Price Index over the last decade.
-    </div>
-
   </div>
-
 
   <div class="vis-container">
-
-    <div class="vis-title">
-      Wage Price Index (WPI)
+    <div class="vis-title">Wage Price Index (WPI)</div>
+    <div class="vis-body">
+      <div id="chart2"></div>
+      <div class="description">
+        This visualisation compares wage growth trends across the same period.
+        The WPI tracks changes in the price of labour in Australia, helping to reveal
+        whether wages have kept pace with the rising cost of living.
+      </div>
     </div>
-
-    <div id="chart2"></div>
-
-    <div class="description">
-      This visualisation compares wage growth trends across the same period.
-    </div>
-
   </div>
-
 
   <div class="vis-container">
-
-    <div class="vis-title">
-      State CPI Comparison
+    <div class="vis-title">State CPI Comparison</div>
+    <div class="vis-body">
+      <div id="map"></div>
+      <div class="description">
+        This choropleth map compares CPI values across Australian states and territories.
+        Darker shades indicate higher inflation levels, highlighting regional disparities
+        in the cost of living across the country.
+      </div>
     </div>
-
-    <div id="map"></div>
-
-    <div class="description">
-      This choropleth map compares CPI values across Australian states and territories.
-    </div>
-
   </div>
-
 
   <script>
-
     window.addEventListener("DOMContentLoaded", function () {
-
-      vegaEmbed('#chart1', 'js/cpi.json', {
-        actions: false
-      });
-
-      vegaEmbed('#chart2', 'js/wpi.json', {
-        actions: false
-      });
-
-      vegaEmbed('#map', 'js/map.json', {
-        actions: false
-      });
-
+      vegaEmbed('#chart1', 'js/cpi.json', { actions: false });
+      vegaEmbed('#chart2', 'js/wpi.json', { actions: false });
+      vegaEmbed('#map', 'js/map.json', { actions: false });
     });
-
   </script>
 
 </body>
