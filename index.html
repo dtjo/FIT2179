@@ -1,17 +1,119 @@
-<body>
-  <h1>Reality Check: $100 Across 10 Years</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-  <div id="chart1"></div>
-  <div id="chart2"></div>
-  <div id="map"></div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Reality Check: $100 Across 10 Years</title>
 
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 40px;
+      color: #222;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 42px;
+    }
+
+    .vis-container {
+      background-color: white;
+      padding: 25px;
+      margin-bottom: 40px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .vis-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      margin-top: 15px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <h1>Reality Check: $100 Across 10 Years</h1>
+
+  <div class="vis-container">
+    <div class="vis-title">
+      Consumer Price Index (CPI)
+    </div>
+
+    <div id="chart1"></div>
+
+    <div class="description">
+      This visualisation shows the change in Australia's Consumer Price Index over the last decade.
+    </div>
+  </div>
+
+
+  <div class="vis-container">
+    <div class="vis-title">
+      Wage Price Index (WPI)
+    </div>
+
+    <div id="chart2"></div>
+
+    <div class="description">
+      This visualisation compares wage growth trends across the same period.
+    </div>
+  </div>
+
+
+  <div class="vis-container">
+    <div class="vis-title">
+      State CPI Comparison
+    </div>
+
+    <div id="map"></div>
+
+    <div class="description">
+      This choropleth map compares CPI values across Australian states and territories.
+    </div>
+  </div>
+
+
   <script>
-    vegaEmbed('#chart1', 'js/cpi.json', { actions: false });
-    vegaEmbed('#chart2', 'js/wpi.json', { actions: false });
-    vegaEmbed('#map', 'js/map.json', { actions: false });
+
+    window.addEventListener("DOMContentLoaded", function () {
+
+      vegaEmbed('#chart1', 'js/cpi.json', {
+        actions: false
+      });
+
+      vegaEmbed('#chart2', 'js/wpi.json', {
+        actions: false
+      });
+
+      vegaEmbed('#map', 'js/map.json', {
+        actions: false
+      });
+
+    });
+
   </script>
+
 </body>
+
+</html>
