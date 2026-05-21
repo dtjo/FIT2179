@@ -6,7 +6,7 @@ body {
     margin: 0;
     padding: 40px;
     color: #222;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 h1 {
@@ -27,7 +27,7 @@ h1 {
 }
 
 .vis-title {
-    font-size: 68px;
+    font-size: 60px;
     font-weight: 600;
     margin-bottom: 20px;
     color: #111;
