@@ -5,12 +5,13 @@
     "font": "DM Sans",
     "axis": {
       "gridColor": "#2b2b2b",
-      "domainColor": "#393939",
-      "tickColor": "#393939",
-      "labelColor": "#b9b3a5",
+      "domainColor": "#d6cfbf",
+      "tickColor": "#d6cfbf",
+      "labelColor": "#d6cfbf",
       "titleColor": "#d6cfbf",
       "labelFontSize": 12,
-      "titleFontSize": 12
+      "titleFontSize": 13,
+      "titleFontWeight": "bold"
     },
     "legend": {
       "labelColor": "#d6cfbf",
@@ -23,35 +24,22 @@
   },
   "width": "container",
   "height": 330,
-  "data": {
-    "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main//data/wpi_inflation.csv"
-  },
-  "transform": [
-    {
-      "fold": [
-        "WPI",
-        "Inflation Rate (%)"
-      ],
-      "as": [
-        "Measure",
-        "Value"
-      ]
-    }
-  ],
   "layer": [
     {
       "data": {
         "values": [
           {
-            "start": 2021.5,
-            "end": 2023.5
+            "start": 2022,
+            "end": 2023,
+            "bottom": 0,
+            "top": 7
           }
         ]
       },
       "mark": {
         "type": "rect",
-        "color": "#e05c3a",
-        "opacity": 0.08
+        "color": "#777777",
+        "opacity": 0.16
       },
       "encoding": {
         "x": {
@@ -64,10 +52,76 @@
         },
         "x2": {
           "field": "end"
+        },
+        "y": {
+          "field": "bottom",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 7]
+          },
+          "axis": null
+        },
+        "y2": {
+          "field": "top"
         }
       }
     },
     {
+      "data": {
+        "values": [
+          {
+            "Year": 2022.05,
+            "Rate": 6.75,
+            "Label": "2022-2023 Australia cost-of-living shock"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#d6cfbf"
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "scale": {
+            "domain": [2015, 2025]
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "Rate",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 7]
+          },
+          "axis": null
+        },
+        "text": {
+          "field": "Label"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/wpi_inflation.csv"
+      },
+      "transform": [
+        {
+          "fold": [
+            "WPI",
+            "Inflation Rate (%)"
+          ],
+          "as": [
+            "Measure",
+            "Rate"
+          ]
+        }
+      ],
       "mark": {
         "type": "line",
         "strokeWidth": 3,
@@ -84,33 +138,39 @@
             "domain": [2015, 2025]
           },
           "axis": {
-            "format": "d",
-            "tickCount": 11,
             "title": "Year",
-            "labelAngle": 0
+            "format": "d",
+            "values": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+            "labelAngle": 0,
+            "labelColor": "#d6cfbf",
+            "titleColor": "#d6cfbf",
+            "domainColor": "#d6cfbf",
+            "tickColor": "#d6cfbf",
+            "grid": true
           }
         },
         "y": {
-          "field": "Value",
+          "field": "Rate",
           "type": "quantitative",
-          "axis": {
-            "title": "Rate (%)"
-          },
           "scale": {
             "domain": [0, 7]
+          },
+          "axis": {
+            "title": "Rate (%)",
+            "values": [0, 1, 2, 3, 4, 5, 6, 7],
+            "labelColor": "#d6cfbf",
+            "titleColor": "#d6cfbf",
+            "domainColor": "#d6cfbf",
+            "tickColor": "#d6cfbf",
+            "grid": true
           }
         },
         "color": {
           "field": "Measure",
+          "type": "nominal",
           "scale": {
-            "domain": [
-              "WPI",
-              "Inflation Rate (%)"
-            ],
-            "range": [
-              "#009E73",
-              "#D55E00"
-            ]
+            "domain": ["WPI", "Inflation Rate (%)"],
+            "range": ["#009E73", "#D55E00"]
           },
           "legend": {
             "title": "Measure"
@@ -127,7 +187,7 @@
             "title": "Measure"
           },
           {
-            "field": "Value",
+            "field": "Rate",
             "title": "Rate (%)",
             "format": ".2f"
           }
