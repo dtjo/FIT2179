@@ -24,7 +24,7 @@
   "width": "container",
   "height": 330,
   "data": {
-    "url": "data/inflation_100.csv"
+    "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/inflation_100.csv"
   },
   "encoding": {
     "x": {
