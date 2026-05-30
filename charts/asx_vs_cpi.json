@@ -24,13 +24,13 @@
   "width": "container",
   "height": 320,
   "data": {
-    "url": "data/asx_cpi_index.csv"
+    "url": "data/asx200.csv"
   },
   "transform": [
     {
       "fold": [
-        "ASX200",
-        "CPI Index"
+        "ASX200 Growth (%)",
+        "Inflation (%)"
       ],
       "as": [
         "Measure",
@@ -38,58 +38,80 @@
       ]
     }
   ],
-  "mark": {
-    "type": "line",
-    "strokeWidth": 3,
-    "point": {
-      "filled": true,
-      "size": 45
-    }
-  },
-  "encoding": {
-    "x": {
-      "field": "Year",
-      "type": "quantitative",
-      "axis": {
-        "format": "d",
-        "tickCount": 11
-      }
-    },
-    "y": {
-      "field": "Value",
-      "type": "quantitative",
-      "axis": {
-        "title": "Indexed to 2015 = 100"
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#777777",
+        "strokeDash": [
+          4,
+          4
+        ]
       },
-      "scale": {
-        "zero": false
+      "encoding": {
+        "y": {
+          "datum": 0,
+          "type": "quantitative"
+        }
       }
     },
-    "color": {
-      "field": "Measure",
-      "scale": {
-        "domain": [
-          "ASX200",
-          "CPI Index"
-        ],
-        "range": [
-          "#4caf7d",
-          "#e05c3a"
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "point": {
+          "filled": true,
+          "size": 55
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "axis": {
+            "format": "d",
+            "tickCount": 11,
+            "title": "Year"
+          }
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "axis": {
+            "title": "Annual growth (%)"
+          }
+        },
+        "color": {
+          "field": "Measure",
+          "scale": {
+            "domain": [
+              "ASX200 Growth (%)",
+              "Inflation (%)"
+            ],
+            "range": [
+              "#4caf7d",
+              "#e05c3a"
+            ]
+          },
+          "legend": {
+            "title": null
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "format": "d"
+          },
+          {
+            "field": "Measure"
+          },
+          {
+            "field": "Value",
+            "title": "Growth (%)",
+            "format": ".2f"
+          }
         ]
       }
-    },
-    "tooltip": [
-      {
-        "field": "Year",
-        "format": "d"
-      },
-      {
-        "field": "Measure"
-      },
-      {
-        "field": "Value",
-        "format": ".1f"
-      }
-    ]
-  }
+    }
+  ]
 }
