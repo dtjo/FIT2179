@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 320,
+  "background": "transparent",
+  "config": {
+    "font": "DM Sans",
+    "axis": {
+      "gridColor": "#2a2a2a",
+      "domainColor": "#2a2a2a",
+      "tickColor": "#2a2a2a",
+      "labelColor": "#888",
+      "titleColor": "#888",
+      "labelFontSize": 12
+    },
+    "view": { "stroke": "transparent" },
+    "legend": { "labelColor": "#888", "titleColor": "#888", "orient": "top-left" }
+  },
+  "data": {
+    "values": [
+      {"Year": 2015, "ASX200": 100, "CPI": 100},
+      {"Year": 2016, "ASX200": 107.0, "CPI": 101.5},
+      {"Year": 2017, "ASX200": 114.5, "CPI": 103.5},
+      {"Year": 2018, "ASX200": 106.6, "CPI": 105.5},
+      {"Year": 2019, "ASX200": 126.2, "CPI": 107.2},
+      {"Year": 2020, "ASX200": 124.4, "CPI": 108.1},
+      {"Year": 2021, "ASX200": 140.6, "CPI": 111.2},
+      {"Year": 2022, "ASX200": 132.9, "CPI": 118.5},
+      {"Year": 2023, "ASX200": 143.3, "CPI": 125.1},
+      {"Year": 2024, "ASX200": 154.1, "CPI": 129.1},
+      {"Year": 2025, "ASX200": 164.5, "CPI": 134.0}
+    ]
+  },
+  "transform": [
+    { "fold": ["ASX200", "CPI"], "as": ["Measure", "Value"] }
+  ],
+  "mark": { "type": "line", "strokeWidth": 2.5, "point": { "filled": true, "size": 40 } },
+  "encoding": {
+    "x": { "field": "Year", "type": "quantitative", "axis": { "format": "d", "tickCount": 11 } },
+    "y": { "field": "Value", "type": "quantitative", "axis": { "title": "Indexed to 2015 = 100" } },
+    "color": {
+      "field": "Measure",
+      "scale": { "domain": ["ASX200", "CPI"], "range": ["#4caf7d", "#e05c3a"] }
+    },
+    "tooltip": [
+      { "field": "Year", "title": "Year", "format": "d" },
+      { "field": "Measure" },
+      { "field": "Value", "format": ".1f" }
+    ]
+  }
+}

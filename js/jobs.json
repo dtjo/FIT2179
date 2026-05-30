@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 280,
+  "background": "transparent",
+  "config": {
+    "font": "DM Sans",
+    "axis": {
+      "gridColor": "#2a2a2a",
+      "domainColor": "#2a2a2a",
+      "tickColor": "#2a2a2a",
+      "labelColor": "#888",
+      "titleColor": "#888",
+      "labelFontSize": 11
+    },
+    "view": { "stroke": "transparent" }
+  },
+  "data": { "url": "Data/job.csv" },
+  "layer": [
+    {
+      "mark": { "type": "area", "color": "#e05c3a", "opacity": 0.12, "line": { "color": "#e05c3a", "strokeWidth": 2 } },
+      "encoding": {
+        "x": { "field": "Date", "type": "ordinal", "axis": { "labelAngle": -60, "labelOverlap": true, "tickCount": 8, "title": "Quarter" } },
+        "y": { "field": "Multiple Job Holding Rate (%)", "type": "quantitative", "axis": { "title": "Multiple Job Holding Rate (%)" }, "scale": { "zero": false } }
+      }
+    },
+    {
+      "mark": { "type": "rule", "color": "#e8c547", "strokeDash": [4, 4], "opacity": 0.5 },
+      "data": { "values": [{ "y": 6.0 }] },
+      "encoding": { "y": { "field": "y", "type": "quantitative" } }
+    },
+    {
+      "data": { "values": [{ "Date": "Jun-22", "y": 6.5, "label": "Post-COVID surge →" }] },
+      "mark": { "type": "text", "align": "right", "fontSize": 11, "color": "#e8c547", "fontStyle": "italic" },
+      "encoding": {
+        "x": { "field": "Date", "type": "ordinal" },
+        "y": { "field": "y", "type": "quantitative" },
+        "text": { "field": "label" }
+      }
+    }
+  ]
+}
