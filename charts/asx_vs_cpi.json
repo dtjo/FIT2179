@@ -1,0 +1,95 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "config": {
+    "font": "DM Sans",
+    "axis": {
+      "gridColor": "#2b2b2b",
+      "domainColor": "#393939",
+      "tickColor": "#393939",
+      "labelColor": "#b9b3a5",
+      "titleColor": "#d6cfbf",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#d6cfbf",
+      "titleColor": "#d6cfbf",
+      "orient": "top"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  },
+  "width": "container",
+  "height": 320,
+  "data": {
+    "url": "data/asx_cpi_index.csv"
+  },
+  "transform": [
+    {
+      "fold": [
+        "ASX200",
+        "CPI Index"
+      ],
+      "as": [
+        "Measure",
+        "Value"
+      ]
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "strokeWidth": 3,
+    "point": {
+      "filled": true,
+      "size": 45
+    }
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "quantitative",
+      "axis": {
+        "format": "d",
+        "tickCount": 11
+      }
+    },
+    "y": {
+      "field": "Value",
+      "type": "quantitative",
+      "axis": {
+        "title": "Indexed to 2015 = 100"
+      },
+      "scale": {
+        "zero": false
+      }
+    },
+    "color": {
+      "field": "Measure",
+      "scale": {
+        "domain": [
+          "ASX200",
+          "CPI Index"
+        ],
+        "range": [
+          "#4caf7d",
+          "#e05c3a"
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Year",
+        "format": "d"
+      },
+      {
+        "field": "Measure"
+      },
+      {
+        "field": "Value",
+        "format": ".1f"
+      }
+    ]
+  }
+}

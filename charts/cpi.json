@@ -1,0 +1,68 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "config": {
+    "font": "DM Sans",
+    "axis": {
+      "gridColor": "#2b2b2b",
+      "domainColor": "#393939",
+      "tickColor": "#393939",
+      "labelColor": "#b9b3a5",
+      "titleColor": "#d6cfbf",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#d6cfbf",
+      "titleColor": "#d6cfbf",
+      "orient": "top"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  },
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "data/cpi.csv"
+  },
+  "mark": {
+    "type": "line",
+    "color": "#e8c547",
+    "strokeWidth": 3,
+    "point": {
+      "filled": true,
+      "size": 55
+    }
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "quantitative",
+      "axis": {
+        "format": "d",
+        "tickCount": 11
+      }
+    },
+    "y": {
+      "field": "CPI",
+      "type": "quantitative",
+      "scale": {
+        "zero": false
+      },
+      "axis": {
+        "title": "CPI index"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Year",
+        "format": "d"
+      },
+      {
+        "field": "CPI",
+        "format": ".2f"
+      }
+    ]
+  }
+}

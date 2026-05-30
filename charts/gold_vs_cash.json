@@ -1,0 +1,95 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "config": {
+    "font": "DM Sans",
+    "axis": {
+      "gridColor": "#2b2b2b",
+      "domainColor": "#393939",
+      "tickColor": "#393939",
+      "labelColor": "#b9b3a5",
+      "titleColor": "#d6cfbf",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#d6cfbf",
+      "titleColor": "#d6cfbf",
+      "orient": "top"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  },
+  "width": "container",
+  "height": 320,
+  "data": {
+    "url": "data/gold.csv"
+  },
+  "transform": [
+    {
+      "fold": [
+        "Gold Price",
+        "Cash "
+      ],
+      "as": [
+        "Asset",
+        "Value"
+      ]
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "strokeWidth": 3,
+    "point": {
+      "filled": true,
+      "size": 45
+    }
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "quantitative",
+      "axis": {
+        "format": "d",
+        "tickCount": 11
+      }
+    },
+    "y": {
+      "field": "Value",
+      "type": "quantitative",
+      "scale": {
+        "zero": false
+      },
+      "axis": {
+        "title": "Indexed to 2015 = 100"
+      }
+    },
+    "color": {
+      "field": "Asset",
+      "scale": {
+        "domain": [
+          "Gold Price",
+          "Cash "
+        ],
+        "range": [
+          "#e8c547",
+          "#888888"
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Year",
+        "format": "d"
+      },
+      {
+        "field": "Asset"
+      },
+      {
+        "field": "Value",
+        "format": ".1f"
+      }
+    ]
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "config": {
+    "font": "DM Sans",
+    "axis": {
+      "gridColor": "#2b2b2b",
+      "domainColor": "#393939",
+      "tickColor": "#393939",
+      "labelColor": "#b9b3a5",
+      "titleColor": "#d6cfbf",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#d6cfbf",
+      "titleColor": "#d6cfbf",
+      "orient": "top"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  },
+  "width": "container",
+  "height": 330,
+  "data": {
+    "url": "data/adjusted_rent.csv"
+  },
+  "params": [
+    {
+      "name": "Selected_city",
+      "value": "Sydney",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Sydney",
+          "Melbourne",
+          "Brisbane",
+          "Adelaide",
+          "Perth",
+          "Hobart",
+          "Darwin",
+          "Canberra"
+        ],
+        "name": "City: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "fold": [
+        "Sydney",
+        "Melbourne",
+        "Brisbane",
+        "Adelaide",
+        "Perth",
+        "Hobart",
+        "Darwin",
+        "Canberra"
+      ],
+      "as": [
+        "City",
+        "Rent Index"
+      ]
+    },
+    {
+      "filter": "datum.City == Selected_city"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#666",
+        "strokeDash": [
+          4,
+          4
+        ]
+      },
+      "data": {
+        "values": [
+          {
+            "baseline": 100
+          }
+        ]
+      },
+      "encoding": {
+        "y": {
+          "field": "baseline",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "area",
+        "color": "#4caf7d",
+        "opacity": 0.14,
+        "line": {
+          "color": "#4caf7d",
+          "strokeWidth": 3
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "axis": {
+            "format": "d",
+            "tickCount": 11
+          }
+        },
+        "y": {
+          "field": "Rent Index",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          },
+          "axis": {
+            "title": "Rent index, 2015 = 100"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "format": "d"
+          },
+          {
+            "field": "City"
+          },
+          {
+            "field": "Rent Index",
+            "format": ".0f"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "config": {
+    "font": "DM Sans",
+    "axis": {
+      "gridColor": "#2b2b2b",
+      "domainColor": "#393939",
+      "tickColor": "#393939",
+      "labelColor": "#b9b3a5",
+      "titleColor": "#d6cfbf",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#d6cfbf",
+      "titleColor": "#d6cfbf",
+      "orient": "top"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  },
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "data/coffee_cpi.csv"
+  },
+  "transform": [
+    {
+      "fold": [
+        "CPI Growth",
+        "Coffee Price Growth"
+      ],
+      "as": [
+        "Measure",
+        "Value"
+      ]
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "cornerRadiusTopLeft": 3,
+    "cornerRadiusTopRight": 3,
+    "width": {
+      "band": 0.45
+    }
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "axis": {
+        "labelAngle": 0
+      }
+    },
+    "xOffset": {
+      "field": "Measure"
+    },
+    "y": {
+      "field": "Value",
+      "type": "quantitative",
+      "axis": {
+        "title": "Annual growth (%)"
+      }
+    },
+    "color": {
+      "field": "Measure",
+      "scale": {
+        "domain": [
+          "CPI Growth",
+          "Coffee Price Growth"
+        ],
+        "range": [
+          "#e8c547",
+          "#e05c3a"
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Year"
+      },
+      {
+        "field": "Measure"
+      },
+      {
+        "field": "Value",
+        "format": ".2f"
+      }
+    ]
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "config": {
+    "font": "DM Sans",
+    "axis": {
+      "gridColor": "#2b2b2b",
+      "domainColor": "#393939",
+      "tickColor": "#393939",
+      "labelColor": "#b9b3a5",
+      "titleColor": "#d6cfbf",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#d6cfbf",
+      "titleColor": "#d6cfbf",
+      "orient": "top"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  },
+  "width": "container",
+  "height": 420,
+  "projection": {
+    "type": "mercator",
+    "center": [
+      132,
+      -28
+    ],
+    "scale": 650
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/js/australia_states.json",
+    "format": {
+      "type": "topojson",
+      "feature": "STE_2016_AUST"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.STE_NAME16",
+      "from": {
+        "data": {
+          "url": "data/state_cpi.csv"
+        },
+        "key": "state",
+        "fields": [
+          "CPI"
+        ]
+      }
+    }
+  ],
+  "mark": {
+    "type": "geoshape",
+    "stroke": "#0d0d0d",
+    "strokeWidth": 1.4
+  },
+  "encoding": {
+    "color": {
+      "field": "CPI",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "orangered",
+        "domain": [
+          4.0,
+          5.2
+        ]
+      },
+      "legend": {
+        "title": "CPI (%)"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "properties.STE_NAME16",
+        "title": "State"
+      },
+      {
+        "field": "CPI",
+        "title": "CPI (%)",
+        "format": ".1f"
+      }
+    ]
+  }
+}

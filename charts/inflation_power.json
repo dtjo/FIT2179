@@ -1,0 +1,126 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "config": {
+    "font": "DM Sans",
+    "axis": {
+      "gridColor": "#2b2b2b",
+      "domainColor": "#393939",
+      "tickColor": "#393939",
+      "labelColor": "#b9b3a5",
+      "titleColor": "#d6cfbf",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#d6cfbf",
+      "titleColor": "#d6cfbf",
+      "orient": "top"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  },
+  "width": "container",
+  "height": 330,
+  "data": {
+    "url": "data/inflation_100.csv"
+  },
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "color": "#e05c3a",
+        "opacity": 0.16,
+        "line": {
+          "color": "#e05c3a",
+          "strokeWidth": 3
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "axis": {
+            "format": "d",
+            "tickCount": 11,
+            "title": "Year"
+          }
+        },
+        "y": {
+          "field": "Value of 100$",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              65,
+              105
+            ]
+          },
+          "axis": {
+            "title": "Real value of $100",
+            "titleColor": "#e05c3a"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "format": "d"
+          },
+          {
+            "field": "Value of 100$",
+            "title": "Real value ($)",
+            "format": ".2f"
+          },
+          {
+            "field": "Inflation Rate (%)",
+            "title": "Inflation (%)",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#e8c547",
+        "opacity": 0.8,
+        "width": 22
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "Inflation Rate (%)",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              8
+            ]
+          },
+          "axis": {
+            "title": "Inflation rate (%)",
+            "titleColor": "#e8c547"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "format": "d"
+          },
+          {
+            "field": "Inflation Rate (%)",
+            "format": ".2f"
+          }
+        ]
+      }
+    }
+  ]
+}

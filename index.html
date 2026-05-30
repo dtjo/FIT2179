@@ -10,389 +10,115 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 <body>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-eyebrow">Australia · 2015 – 2025 · A Decade of Inflation</div>
-  <h1>Your $100 is worth <em>less</em> than you think.</h1>
-  <p class="hero-sub">A data-driven look at how a decade of inflation quietly eroded purchasing power — and what it means for everyday Australians.</p>
-  <div class="hero-stat">
-    <div class="big">$73.93</div>
-    <div class="label">is what your 2015 dollar buys in real terms today</div>
-  </div>
-  <div class="scroll-hint">Scroll to explore</div>
-</section>
-
-<!-- CHAPTER 1 -->
-<div class="chapter-break">
-  <span class="num">01</span>
-  <div class="line"></div>
-  <h2>The Big Picture: What Happened?</h2>
-  <div class="line"></div>
-</div>
-
-<section class="section fade-in">
-  <div class="section-header">
-    <div>
-      <div class="section-label">01 · 01</div>
-      <h2 class="section-title">$100 in 2015 → $73.93 in 2025</h2>
+  <section class="hero">
+    <div class="eyebrow">Australia · 2015 to 2025 · A Decade of Inflation</div>
+    <h1>Your $100 is worth <em>less</em> than you think.</h1>
+    <p class="hero-sub">A data-driven look at how inflation eroded purchasing power, raised everyday costs, and changed the gap between wages, prices, and assets.</p>
+    <div class="hero-stat">
+      <strong>$73.93</strong>
+      <span>is what $100 from 2015 buys in real terms by 2025.</span>
     </div>
-    <p class="section-desc">Inflation quietly chips away at purchasing power year by year. The cumulative effect over a decade is striking.</p>
-  </div>
-  <div class="card" style="max-width:800px;">
-    <div class="card-label">Inflation Rate (bars) vs Real Value of $100 (area) · 2015–2025</div>
-    <div id="inflation-chart" class="viz-wrap"></div>
-  </div>
-</section>
+    <div class="scroll-hint">Scroll to explore</div>
+  </section>
 
-<section class="section fade-in">
-  <div class="section-header">
-    <div>
-      <div class="section-label">01 · 02</div>
-      <h2 class="section-title">Consumer Price Index</h2>
+  <div class="chapter"><span>01</span><div class="line"></div><h2>The big picture</h2><div class="line"></div></div>
+
+  <section class="section fade-in">
+    <div class="section-header">
+      <div><div class="section-label">01 · 01</div><h2 class="section-title">$100 in 2015 became $73.93 in 2025.</h2></div>
+      <p class="section-desc">The year-to-year inflation rate looks small until the loss compounds over a decade. This chart pairs annual inflation with the shrinking real value of $100.</p>
     </div>
-    <p class="section-desc">The CPI measures the average price change of a basket of consumer goods and services over time.</p>
-  </div>
-  <div class="card">
-    <div class="card-label">CPI Index · Australia · 2015–2025</div>
-    <div id="cpi-chart" class="viz-wrap"></div>
-  </div>
-</section>
+    <div class="card wide-card"><div class="card-label">Inflation rate and real value of $100</div><div id="inflation-chart" class="viz"></div></div>
+  </section>
 
-<section class="section fade-in">
-  <div class="section-header">
-    <div>
-      <div class="section-label">01 · 03</div>
-      <h2 class="section-title">Not all states feel it equally.</h2>
+  <section class="section fade-in">
+    <div class="section-header">
+      <div><div class="section-label">01 · 02</div><h2 class="section-title">The CPI climbed steadily.</h2></div>
+      <p class="section-desc">The Consumer Price Index tracks the price level of a broad basket of goods and services. A rising CPI means the same money buys less.</p>
     </div>
-    <p class="section-desc">CPI varies by state. Tasmania and South Australia felt the most pressure, while the territories remained relatively stable.</p>
-  </div>
-  <div class="card">
-    <div class="card-label">State CPI Comparison (%) · Hover for details</div>
-    <div id="map-chart" class="viz-wrap"></div>
-  </div>
-</section>
+    <div class="card"><div class="card-label">Consumer Price Index, Australia</div><div id="cpi-chart" class="viz"></div></div>
+  </section>
 
-<section class="section fade-in">
-  <div class="section-header">
-    <div>
-      <div class="section-label">01 · 04</div>
-      <h2 class="section-title">Why does it hurt? Wages vs. Inflation.</h2>
+  <section class="section fade-in">
+    <div class="section-header">
+      <div><div class="section-label">01 · 03</div><h2 class="section-title">Price pressure differs across states.</h2></div>
+      <p class="section-desc">A map makes the regional pattern easier to compare. Use the tooltip to inspect each state or territory.</p>
     </div>
-    <p class="section-desc">When inflation outpaces wage growth, real purchasing power falls. The 2022 crisis was the worst gap in a decade.</p>
-  </div>
-  <div class="card">
-    <div class="card-label">Wage Price Index vs Inflation Rate (%)</div>
-    <div id="wpi-chart" class="viz-wrap"></div>
-    <div class="annotation-note">🔴 Shaded region: 2022–2023 cost-of-living crisis — inflation peaked at 6.59% while wage growth lagged at 3.3%</div>
-  </div>
-</section>
+    <div class="card"><div class="card-label">State CPI comparison</div><div id="map-chart" class="viz"></div></div>
+  </section>
 
-<!-- CHAPTER 2 -->
-<div class="chapter-break">
-  <span class="num">02</span>
-  <div class="line"></div>
-  <h2>Something Specific, Something Relatable</h2>
-  <div class="line"></div>
-</div>
-
-<section class="section fade-in">
-  <div class="section-header">
-    <div>
-      <div class="section-label">02 · 01</div>
-      <h2 class="section-title">Drag to feel the erosion.</h2>
+  <section class="section fade-in">
+    <div class="section-header">
+      <div><div class="section-label">01 · 04</div><h2 class="section-title">The real pain appears when wages lag prices.</h2></div>
+      <p class="section-desc">When inflation rises faster than wage growth, real purchasing power falls. The 2022 to 2023 period shows the clearest gap.</p>
     </div>
-    <p class="section-desc">Move the slider to see how the real value of $100 diminished each year. Each 🛒 represents ~$4 of purchasing power.</p>
-  </div>
+    <div class="card"><div class="card-label">Wage Price Index versus inflation</div><div id="wpi-chart" class="viz"></div><p class="note">The shaded region marks the cost-of-living shock, where inflation rose much faster than wage growth.</p></div>
+  </section>
 
-  <div class="slider-section">
-    <div class="slider-year-label" id="slider-year">2015</div>
-    <input type="range" class="year-slider" id="year-slider" min="0" max="10" value="0" step="1">
-    <div style="display:flex;justify-content:space-between;margin-top:8px;">
-      <span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);">2015</span>
-      <span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);">2025</span>
+  <div class="chapter"><span>02</span><div class="line"></div><h2>Everyday pressure</h2><div class="line"></div></div>
+
+  <section class="section fade-in">
+    <div class="section-header">
+      <div><div class="section-label">02 · 01</div><h2 class="section-title">Drag the year to feel the erosion.</h2></div>
+      <p class="section-desc">The slider turns the abstract idea of inflation into a simple purchasing-power comparison. Each basket represents roughly $4 of real value.</p>
     </div>
-    <div class="slider-value-display">
-      <div class="slider-stat">
-        <div class="s-label">Real Value of $100</div>
-        <div class="s-val loss" id="slider-value">$100.00</div>
+    <div class="slider-card">
+      <div id="slider-year" class="slider-year">2015</div>
+      <input id="year-slider" class="year-slider" type="range" min="0" max="10" value="0" step="1">
+      <div class="slider-scale"><span>2015</span><span>2025</span></div>
+      <div class="stats-row">
+        <div class="stat"><div class="small-label">Real value</div><strong class="loss" id="slider-value">$100.00</strong></div>
+        <div class="stat"><div class="small-label">Inflation rate</div><strong id="slider-inflation">1.51%</strong></div>
+        <div class="stat"><div class="small-label">Lost to inflation</div><strong class="loss" id="slider-lost">$0.00</strong></div>
       </div>
-      <div class="slider-stat">
-        <div class="s-label">Inflation Rate</div>
-        <div class="s-val" id="slider-inflation">1.51%</div>
-      </div>
-      <div class="slider-stat">
-        <div class="s-label">Lost to Inflation</div>
-        <div class="s-val loss" id="slider-lost">$0.00</div>
-      </div>
+      <div class="small-label" style="color:var(--dim);margin-bottom:12px;">Each basket = about $4</div>
+      <div id="icon-grid" class="icon-grid"></div>
     </div>
-    <div style="margin-top:24px;">
-      <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;">Each 🛒 = ~$4 of groceries</div>
-      <div class="icon-grid" id="icon-grid"></div>
+  </section>
+
+  <section class="section fade-in">
+    <div class="section-header">
+      <div><div class="section-label">02 · 02</div><h2 class="section-title">Coffee became a visible example of everyday inflation.</h2></div>
+      <p class="section-desc">Comparing coffee growth against CPI shows that some familiar purchases can move more sharply than the headline index.</p>
     </div>
-  </div>
-</section>
+    <div class="card"><div class="card-label">CPI growth versus coffee price growth</div><div id="coffee-chart" class="viz"></div></div>
+  </section>
 
-<section class="section fade-in">
-  <div class="section-header">
-    <div>
-      <div class="section-label">02 · 02</div>
-      <h2 class="section-title">Your daily coffee costs more than inflation suggests.</h2>
+  <section class="section fade-in">
+    <div class="section-header">
+      <div><div class="section-label">02 · 03</div><h2 class="section-title">Rent tells a different story in each city.</h2></div>
+      <p class="section-desc">Use the dropdown inside the chart to compare how each capital city moved relative to its 2015 rent level.</p>
     </div>
-    <p class="section-desc">Coffee price growth has been volatile and frequently outpaced overall CPI — a microcosm of grocery inflation.</p>
-  </div>
-  <div class="card">
-    <div class="card-label">Annual CPI Growth vs Coffee Price Growth (%) · 2015–2025</div>
-    <div id="grocery-chart" class="viz-wrap"></div>
-  </div>
-</section>
+    <div class="card"><div class="card-label">Adjusted rent index, 2015 = 100</div><div id="rent-chart" class="viz"></div></div>
+  </section>
 
-<section class="section fade-in">
-  <div class="section-header">
-    <div>
-      <div class="section-label">02 · 03</div>
-      <h2 class="section-title">Rent across Australia: a city-by-city story.</h2>
+  <div class="chapter"><span>03</span><div class="line"></div><h2>Assets and work</h2><div class="line"></div></div>
+
+  <section class="section fade-in">
+    <div class="section-header">
+      <div><div class="section-label">03 · 01</div><h2 class="section-title">The stock market outpaced the shopping basket.</h2></div>
+      <p class="section-desc">This indexed comparison shows why asset ownership matters in an inflationary decade.</p>
     </div>
-    <p class="section-desc">Click a city to explore how rental costs evolved relative to 2015. Some cities surged; others surprised.</p>
-  </div>
-  <div class="card">
-    <div class="card-label">Adjusted Rent Index · Click a city to explore</div>
-    <div class="city-tabs" id="city-tabs">
-      <button class="city-btn active" data-city="Sydney">Sydney</button>
-      <button class="city-btn" data-city="Melbourne">Melbourne</button>
-      <button class="city-btn" data-city="Brisbane">Brisbane</button>
-      <button class="city-btn" data-city="Adelaide">Adelaide</button>
-      <button class="city-btn" data-city="Perth">Perth</button>
-      <button class="city-btn" data-city="Hobart">Hobart</button>
-      <button class="city-btn" data-city="Darwin">Darwin</button>
-      <button class="city-btn" data-city="Canberra">Canberra</button>
+    <div class="card"><div class="card-label">ASX200 versus CPI, indexed to 2015 = 100</div><div id="asx-chart" class="viz"></div></div>
+  </section>
+
+  <section class="section fade-in">
+    <div class="section-header">
+      <div><div class="section-label">03 · 02</div><h2 class="section-title">Gold rose while cash lost real value.</h2></div>
+      <p class="section-desc">Gold is shown as an indexed asset comparison, while cash declines because inflation reduces purchasing power.</p>
     </div>
-    <div id="rental-chart" class="viz-wrap"></div>
-    <div class="annotation-note" id="rental-note">📍 Sydney: Rapid post-COVID recovery with sustained rental pressure into 2025.</div>
-  </div>
-</section>
+    <div class="card"><div class="card-label">Gold versus cash</div><div id="gold-chart" class="viz"></div></div>
+  </section>
 
-<!-- CHAPTER 3 -->
-<div class="chapter-break">
-  <span class="num">03</span>
-  <div class="line"></div>
-  <h2>Zooming In: The Economics Behind</h2>
-  <div class="line"></div>
-</div>
-
-<section class="section fade-in">
-  <div class="section-header">
-    <div>
-      <div class="section-label">03 · 01</div>
-      <h2 class="section-title">The stock market vs your shopping basket.</h2>
+  <section class="section fade-in">
+    <div class="section-header">
+      <div><div class="section-label">03 · 03</div><h2 class="section-title">More Australians are holding multiple jobs.</h2></div>
+      <p class="section-desc">The rise in multiple job holding gives a human signal of pressure beyond the price charts.</p>
     </div>
-    <p class="section-desc">ASX200 investors outpaced inflation significantly over the decade — but not everyone has access to investment markets.</p>
-  </div>
-  <div class="card">
-    <div class="card-label">ASX200 vs CPI — Indexed to 2015 = 100</div>
-    <div id="asx-chart" class="viz-wrap"></div>
-  </div>
-</section>
+    <div class="card"><div class="card-label">Multiple job holding rate</div><div id="jobs-chart" class="viz"></div></div>
+  </section>
 
-<section class="section fade-in">
-  <div class="section-header">
-    <div>
-      <div class="section-label">03 · 02</div>
-      <h2 class="section-title">Gold wins. Cash quietly loses.</h2>
-    </div>
-    <p class="section-desc">While cash erodes with inflation, gold has historically been a hedge — growing 151% in AUD terms since 2015.</p>
-  </div>
-  <div class="card">
-    <div class="card-label">$100 Across the Decade: Gold vs. Cash · 2015–2025</div>
-    <div id="gold-chart" class="viz-wrap"></div>
-  </div>
-</section>
-
-<section class="section fade-in">
-  <div class="section-header">
-    <div>
-      <div class="section-label">03 · 03</div>
-      <h2 class="section-title">More Australians are working multiple jobs.</h2>
-    </div>
-    <p class="section-desc">The multiple job holding rate has trended upward since 2020 — a signal that one income increasingly isn't enough.</p>
-  </div>
-  <div class="card">
-    <div class="card-label">Multiple Job Holding Rate (%) · Quarterly · 2015–2025</div>
-    <div id="jobs-chart" class="viz-wrap"></div>
-  </div>
-</section>
-
-<footer style="padding:60px 8vw;border-top:1px solid var(--border);color:var(--text-dim);font-family:'DM Mono',monospace;font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;">
-  <span>Data: ABS, RBA, World Gold Council · 2015–2025</span>
-  <span>FIT2179 · Data Visualisation</span>
-</footer>
-
-<script>
-const inflationData = [
-  {year:2015,inflation:1.51,value:100},
-  {year:2016,inflation:1.28,value:98.44},
-  {year:2017,inflation:1.95,value:96.52},
-  {year:2018,inflation:1.91,value:94.68},
-  {year:2019,inflation:1.61,value:93.16},
-  {year:2020,inflation:0.85,value:92.37},
-  {year:2021,inflation:2.86,value:89.72},
-  {year:2022,inflation:6.59,value:83.81},
-  {year:2023,inflation:5.60,value:79.36},
-  {year:2024,inflation:3.17,value:76.85},
-  {year:2025,inflation:3.80,value:73.93}
-];
-
-const rentData = {
-  Sydney:    [100,104,105,105,100,98,100,104,108,115,115],
-  Melbourne: [100,104,103,105,105,103,102,100,105,114,117],
-  Brisbane:  [100,99,97,96,96,96,99,107,114,118,120],
-  Adelaide:  [100,100,99,101,103,103,108,112,120,129,132],
-  Perth:     [100,91,82,77,78,79,88,93,102,114,118],
-  Hobart:    [100,106,110,119,128,128,133,136,134,129,129],
-  Darwin:    [100,89,81,78,72,70,78,83,83,84,83],
-  Canberra:  [100,100,105,110,114,114,118,122,116,112,111]
-};
-
-const cityNotes = {
-  Sydney: "📍 Sydney: Rapid post-COVID recovery with sustained rental pressure into 2025.",
-  Melbourne: "📍 Melbourne: Slowest rental growth — softer demand during remote-work era.",
-  Brisbane: "📍 Brisbane: Surged post-2021 driven by interstate migration and Olympics preparation.",
-  Adelaide: "📍 Adelaide: Consistent upward trend — became one of the least affordable cities relative to income.",
-  Perth: "📍 Perth: Sharp decline 2015–2019 due to mining bust, then a strong recovery from 2021.",
-  Hobart: "📍 Hobart: Dramatic rise 2015–2022 driven by tourism boom and severe housing shortage.",
-  Darwin: "📍 Darwin: Sustained decline throughout the decade, reflecting population outflow.",
-  Canberra: "📍 Canberra: Moderate growth with stabilisation in recent years."
-};
-
-const years = [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
-
-const vegaOpts = { actions: false };
-
-// Inflation chart
-const inflationSpec = {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": "container", "height": 300,
-  "background": "transparent",
-  "config": {
-    "font": "DM Sans",
-    "axis": { "gridColor": "#2a2a2a", "domainColor": "#2a2a2a", "tickColor": "#2a2a2a", "labelColor": "#888", "titleColor": "#888", "labelFontSize": 12 },
-    "view": { "stroke": "transparent" },
-    "legend": { "labelColor": "#888", "titleColor": "#888", "orient": "top-left" }
-  },
-  "data": { "values": inflationData },
-  "resolve": { "scale": { "y": "independent" } },
-  "layer": [
-    {
-      "mark": { "type": "area", "color": "#e05c3a", "opacity": 0.15, "line": { "color": "#e05c3a", "strokeWidth": 2.5 } },
-      "encoding": {
-        "x": { "field": "year", "type": "quantitative", "axis": { "format": "d", "tickCount": 11, "title": "Year" } },
-        "y": { "field": "value", "type": "quantitative", "axis": { "title": "Real Value of $100", "titleColor": "#e05c3a" }, "scale": { "domain": [65, 105] } },
-        "tooltip": [
-          { "field": "year", "title": "Year", "format": "d" },
-          { "field": "value", "title": "Real Value ($)", "format": ".2f" },
-          { "field": "inflation", "title": "Inflation Rate (%)", "format": ".2f" }
-        ]
-      }
-    },
-    {
-      "mark": { "type": "bar", "color": "#e8c547", "opacity": 0.75, "width": 24 },
-      "encoding": {
-        "x": { "field": "year", "type": "quantitative" },
-        "y": { "field": "inflation", "type": "quantitative", "axis": { "title": "Inflation Rate (%)", "titleColor": "#e8c547" }, "scale": { "domain": [0, 9] } }
-      }
-    }
-  ]
-};
-vegaEmbed('#inflation-chart', inflationSpec, vegaOpts);
-
-window.addEventListener('DOMContentLoaded', () => {
-  vegaEmbed('#cpi-chart', 'js/cpi.json', vegaOpts);
-  vegaEmbed('#map-chart', 'js/map.json', vegaOpts);
-  vegaEmbed('#wpi-chart', 'js/wpi_vs_inflation.json', vegaOpts);
-  vegaEmbed('#grocery-chart', 'js/grocery.json', vegaOpts);
-  vegaEmbed('#asx-chart', 'js/asx_cpi.json', vegaOpts);
-  vegaEmbed('#gold-chart', 'js/gold.json', vegaOpts);
-  vegaEmbed('#jobs-chart', 'js/jobs.json', vegaOpts);
-
-  // SLIDER
-  const slider = document.getElementById('year-slider');
-  function updateSlider(idx) {
-    const d = inflationData[idx];
-    document.getElementById('slider-year').textContent = d.year;
-    document.getElementById('slider-value').textContent = '$' + d.value.toFixed(2);
-    document.getElementById('slider-inflation').textContent = d.inflation.toFixed(2) + '%';
-    document.getElementById('slider-lost').textContent = '$' + (100 - d.value).toFixed(2);
-    const alive = Math.round(d.value / 4);
-    const grid = document.getElementById('icon-grid');
-    grid.innerHTML = '';
-    for (let i = 0; i < 25; i++) {
-      const cell = document.createElement('div');
-      cell.className = 'icon-cell ' + (i < alive ? 'alive' : 'dead');
-      cell.textContent = '🛒';
-      grid.appendChild(cell);
-    }
-  }
-  slider.addEventListener('input', e => updateSlider(parseInt(e.target.value)));
-  updateSlider(0);
-
-  // RENTAL
-  function renderRental(city) {
-    const values = years.map((y, i) => ({ Year: y, Index: rentData[city][i] }));
-    const spec = {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "width": "container", "height": 300,
-      "background": "transparent",
-      "config": {
-        "font": "DM Sans",
-        "axis": { "gridColor": "#2a2a2a", "domainColor": "#2a2a2a", "tickColor": "#2a2a2a", "labelColor": "#888", "titleColor": "#888", "labelFontSize": 12 },
-        "view": { "stroke": "transparent" }
-      },
-      "data": { "values": values },
-      "layer": [
-        {
-          "mark": { "type": "area", "color": "#4caf7d", "opacity": 0.12, "line": { "color": "#4caf7d", "strokeWidth": 2.5 } },
-          "encoding": {
-            "x": { "field": "Year", "type": "quantitative", "axis": { "format": "d", "tickCount": 11 } },
-            "y": { "field": "Index", "type": "quantitative", "axis": { "title": "Rent Index (2015 = 100)" }, "scale": { "zero": false } }
-          }
-        },
-        {
-          "mark": { "type": "rule", "color": "#444", "strokeDash": [4,4] },
-          "data": { "values": [{ "y": 100 }] },
-          "encoding": { "y": { "field": "y", "type": "quantitative" } }
-        },
-        {
-          "mark": { "type": "point", "filled": true, "color": "#4caf7d", "size": 60 },
-          "encoding": {
-            "x": { "field": "Year", "type": "quantitative" },
-            "y": { "field": "Index", "type": "quantitative" },
-            "tooltip": [
-              { "field": "Year", "title": "Year", "format": "d" },
-              { "field": "Index", "title": city + " Rent Index", "format": ".0f" }
-            ]
-          }
-        }
-      ]
-    };
-    vegaEmbed('#rental-chart', spec, vegaOpts);
-    document.getElementById('rental-note').textContent = cityNotes[city];
-  }
-  renderRental('Sydney');
-
-  document.querySelectorAll('.city-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderRental(btn.dataset.city);
-    });
-  });
-
-  // SCROLL FADE
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-});
-</script>
+  <footer><span>Data: ABS, RBA, World Gold Council · 2015 to 2025</span><span>FIT2179 · Vega-Lite data visualisation</span></footer>
+  <script src="js/main.js"></script>
 </body>
 </html>

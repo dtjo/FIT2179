@@ -1,0 +1,120 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "config": {
+    "font": "DM Sans",
+    "axis": {
+      "gridColor": "#2b2b2b",
+      "domainColor": "#393939",
+      "tickColor": "#393939",
+      "labelColor": "#b9b3a5",
+      "titleColor": "#d6cfbf",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#d6cfbf",
+      "titleColor": "#d6cfbf",
+      "orient": "top"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  },
+  "width": "container",
+  "height": 330,
+  "data": {
+    "url": "data/wpi_inflation.csv"
+  },
+  "transform": [
+    {
+      "fold": [
+        "WPI",
+        "Inflation Rate (%)"
+      ],
+      "as": [
+        "Measure",
+        "Value"
+      ]
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "color": "#e05c3a",
+        "opacity": 0.08
+      },
+      "data": {
+        "values": [
+          {
+            "x1": 2021.5,
+            "x2": 2023.5
+          }
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "x1",
+          "type": "quantitative"
+        },
+        "x2": {
+          "field": "x2"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "point": {
+          "filled": true,
+          "size": 55
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "axis": {
+            "format": "d",
+            "tickCount": 11
+          }
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "axis": {
+            "title": "Rate (%)"
+          }
+        },
+        "color": {
+          "field": "Measure",
+          "scale": {
+            "domain": [
+              "WPI",
+              "Inflation Rate (%)"
+            ],
+            "range": [
+              "#4caf7d",
+              "#e05c3a"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "format": "d"
+          },
+          {
+            "field": "Measure"
+          },
+          {
+            "field": "Value",
+            "format": ".2f"
+          }
+        ]
+      }
+    }
+  ]
+}
