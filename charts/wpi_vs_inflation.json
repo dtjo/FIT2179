@@ -24,7 +24,7 @@
   "width": "container",
   "height": 330,
   "data": {
-    "url": "data/wpi_inflation.csv"
+    "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main//data/wpi_inflation.csv"
   },
   "transform": [
     {
@@ -40,26 +40,30 @@
   ],
   "layer": [
     {
+      "data": {
+        "values": [
+          {
+            "start": 2021.5,
+            "end": 2023.5
+          }
+        ]
+      },
       "mark": {
         "type": "rect",
         "color": "#e05c3a",
         "opacity": 0.08
       },
-      "data": {
-        "values": [
-          {
-            "x1": 2021.5,
-            "x2": 2023.5
-          }
-        ]
-      },
       "encoding": {
         "x": {
-          "field": "x1",
-          "type": "quantitative"
+          "field": "start",
+          "type": "quantitative",
+          "scale": {
+            "domain": [2015, 2025]
+          },
+          "axis": null
         },
         "x2": {
-          "field": "x2"
+          "field": "end"
         }
       }
     },
@@ -76,9 +80,14 @@
         "x": {
           "field": "Year",
           "type": "quantitative",
+          "scale": {
+            "domain": [2015, 2025]
+          },
           "axis": {
             "format": "d",
-            "tickCount": 11
+            "tickCount": 11,
+            "title": "Year",
+            "labelAngle": 0
           }
         },
         "y": {
@@ -86,6 +95,9 @@
           "type": "quantitative",
           "axis": {
             "title": "Rate (%)"
+          },
+          "scale": {
+            "domain": [0, 7]
           }
         },
         "color": {
@@ -96,21 +108,27 @@
               "Inflation Rate (%)"
             ],
             "range": [
-              "#4caf7d",
-              "#e05c3a"
+              "#009E73",
+              "#D55E00"
             ]
+          },
+          "legend": {
+            "title": "Measure"
           }
         },
         "tooltip": [
           {
             "field": "Year",
+            "title": "Year",
             "format": "d"
           },
           {
-            "field": "Measure"
+            "field": "Measure",
+            "title": "Measure"
           },
           {
             "field": "Value",
+            "title": "Rate (%)",
             "format": ".2f"
           }
         ]
