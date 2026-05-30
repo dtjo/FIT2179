@@ -4,7 +4,7 @@ const vegaOptions = { actions: false, renderer: 'svg' };
 const chartList = [
   ['#inflation-chart', 'charts/inflation_power.json'],
   ['#cpi-chart', 'charts/cpi.json'],
-  ['#map-chart', 'charts/state_map.json'],
+  ['#state_map', 'charts/state_map.json'],
   ['#wpi-chart', 'charts/wpi_vs_inflation.json'],
   ['#coffee-chart', 'charts/coffee_vs_cpi.json'],
   ['#rent-chart', 'charts/rent_index.json'],
