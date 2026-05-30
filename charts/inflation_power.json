@@ -1,6 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "background": "transparent",
+  "padding": {
+    "left": 10,
+    "right": 20,
+    "top": 10,
+    "bottom": 50
+  },
   "config": {
     "font": "DM Sans",
     "axis": {
@@ -21,14 +27,13 @@
       "stroke": "transparent"
     }
   },
-  "width": "container",
-  "height": 330,
+  "width": 680,
+  "height": 310,
   "data": {
-    "url": "data/inflation_100.csv"
+    "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/inflation_100.csv"
   },
   "resolve": {
     "scale": {
-      "x": "shared",
       "y": "independent"
     }
   },
@@ -51,14 +56,15 @@
             "domain": [2015, 2025]
           },
           "axis": {
-            "format": "d",
-            "tickCount": 11,
             "title": "Year",
+            "format": "d",
+            "values": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
             "labelAngle": 0,
             "labelColor": "#b9b3a5",
             "titleColor": "#d6cfbf",
             "domainColor": "#b9b3a5",
-            "tickColor": "#b9b3a5"
+            "tickColor": "#b9b3a5",
+            "grid": true
           }
         },
         "y": {
@@ -68,7 +74,7 @@
             "domain": [0, 105]
           },
           "axis": {
-            "title": "Real value of $100",
+            "title": "Real value",
             "orient": "left",
             "titleColor": "#0072B2",
             "labelColor": "#0072B2",
@@ -100,7 +106,7 @@
         "type": "bar",
         "color": "#E69F00",
         "opacity": 0.85,
-        "width": 22
+        "width": 18
       },
       "encoding": {
         "x": {
@@ -109,7 +115,17 @@
           "scale": {
             "domain": [2015, 2025]
           },
-          "axis": null
+          "axis": {
+            "title": "Year",
+            "format": "d",
+            "values": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+            "labelAngle": 0,
+            "labelColor": "#b9b3a5",
+            "titleColor": "#d6cfbf",
+            "domainColor": "#b9b3a5",
+            "tickColor": "#b9b3a5",
+            "grid": true
+          }
         },
         "y": {
           "field": "Inflation Rate (%)",
@@ -118,7 +134,7 @@
             "domain": [0, 8]
           },
           "axis": {
-            "title": "Inflation rate (%)",
+            "title": "Inflation rate",
             "orient": "right",
             "titleColor": "#E69F00",
             "labelColor": "#E69F00",
@@ -150,7 +166,7 @@
         "type": "point",
         "filled": true,
         "color": "#0072B2",
-        "size": 65
+        "size": 55
       },
       "encoding": {
         "x": {
@@ -158,16 +174,14 @@
           "type": "quantitative",
           "scale": {
             "domain": [2015, 2025]
-          },
-          "axis": null
+          }
         },
         "y": {
           "field": "Value of 100$",
           "type": "quantitative",
           "scale": {
             "domain": [0, 105]
-          },
-          "axis": null
+          }
         },
         "tooltip": [
           {
@@ -184,21 +198,26 @@
       }
     },
     {
-      "transform": [
-        {
-          "filter": "datum.Year == 2020 || datum.Year == 2022"
-        },
-        {
-          "calculate": "datum.Year == 2020 ? 'COVID-19 disruption' : 'Inflation surge'",
-          "as": "Major event"
-        }
-      ],
+      "data": {
+        "values": [
+          {
+            "Year": 2020,
+            "Value of 100$": 92.37,
+            "Event": "2020 COVID-19 shock"
+          },
+          {
+            "Year": 2022,
+            "Value of 100$": 83.81,
+            "Event": "2022 inflation surge"
+          }
+        ]
+      },
       "mark": {
         "type": "point",
         "filled": true,
         "color": "#666666",
-        "size": 180,
-        "stroke": "#ffffff",
+        "size": 150,
+        "stroke": "#d6cfbf",
         "strokeWidth": 2
       },
       "encoding": {
@@ -207,24 +226,22 @@
           "type": "quantitative",
           "scale": {
             "domain": [2015, 2025]
-          },
-          "axis": null
+          }
         },
         "y": {
           "field": "Value of 100$",
           "type": "quantitative",
           "scale": {
             "domain": [0, 105]
-          },
-          "axis": null
+          }
         },
         "shape": {
-          "field": "Major event",
+          "field": "Event",
           "type": "nominal",
           "scale": {
             "domain": [
-              "COVID-19 disruption",
-              "Inflation surge"
+              "2020 COVID-19 shock",
+              "2022 inflation surge"
             ],
             "range": [
               "circle",
@@ -237,7 +254,7 @@
         },
         "tooltip": [
           {
-            "field": "Major event",
+            "field": "Event",
             "title": "Major event"
           },
           {
@@ -249,13 +266,52 @@
             "field": "Value of 100$",
             "title": "Real value of $100",
             "format": ".2f"
-          },
-          {
-            "field": "Inflation Rate (%)",
-            "title": "Inflation rate (%)",
-            "format": ".2f"
           }
         ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Year": 2020.08,
+            "Value of 100$": 99,
+            "Label": "COVID-19 period"
+          },
+          {
+            "Year": 2022.08,
+            "Value of 100$": 90,
+            "Label": "Inflation surge"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#d6cfbf",
+        "dx": 6
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "scale": {
+            "domain": [2015, 2025]
+          }
+        },
+        "y": {
+          "field": "Value of 100$",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 105]
+          }
+        },
+        "text": {
+          "field": "Label"
+        }
       }
     }
   ]
