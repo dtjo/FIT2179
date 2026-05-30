@@ -1,4 +1,3 @@
-
 const vegaOptions = { actions: false, renderer: 'svg' };
 
 const chartList = [
@@ -14,10 +13,14 @@ const chartList = [
 ];
 
 for (const [target, spec] of chartList) {
-  vegaEmbed(target, spec, vegaOptions).catch(error => {
-    document.querySelector(target).innerHTML = `<p style="color:#e05c3a;font-family:DM Mono,monospace;font-size:12px;">Chart failed to load: ${spec}</p>`;
-    console.error(error);
-  });
+  const element = document.querySelector(target);
+
+  if (element) {
+    vegaEmbed(target, spec, vegaOptions).catch(error => {
+      element.innerHTML = `<p style="color:#e05c3a;font-family:DM Mono,monospace;font-size:12px;">Chart failed to load: ${spec}</p>`;
+      console.error(error);
+    });
+  }
 }
 
 const inflationData = [
@@ -36,13 +39,17 @@ const inflationData = [
 
 function updateSlider(index) {
   const point = inflationData[index];
+
   document.getElementById('slider-year').textContent = point.year;
   document.getElementById('slider-value').textContent = `$${point.value.toFixed(2)}`;
   document.getElementById('slider-inflation').textContent = `${point.inflation.toFixed(2)}%`;
   document.getElementById('slider-lost').textContent = `$${(100 - point.value).toFixed(2)}`;
+
   const activeBaskets = Math.round(point.value / 4);
   const grid = document.getElementById('icon-grid');
+
   grid.innerHTML = '';
+
   for (let i = 0; i < 25; i += 1) {
     const cell = document.createElement('div');
     cell.className = `icon-cell ${i < activeBaskets ? 'alive' : 'dead'}`;
@@ -51,13 +58,20 @@ function updateSlider(index) {
   }
 }
 
-document.getElementById('year-slider').addEventListener('input', event => updateSlider(Number(event.target.value)));
+document.getElementById('year-slider').addEventListener('input', event => {
+  updateSlider(Number(event.target.value));
+});
+
 updateSlider(0);
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
   });
 }, { threshold: 0.08 });
 
-document.querySelectorAll('.fade-in').forEach(section => observer.observe(section));
+document.querySelectorAll('.fade-in').forEach(section => {
+  observer.observe(section);
+});
