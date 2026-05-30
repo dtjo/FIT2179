@@ -4,12 +4,16 @@
   "config": {
     "font": "DM Sans",
     "axis": {
+      "grid": true,
       "gridColor": "#2b2b2b",
+      "domain": true,
       "domainColor": "#d6cfbf",
+      "ticks": true,
       "tickColor": "#d6cfbf",
+      "labels": true,
       "labelColor": "#d6cfbf",
-      "titleColor": "#d6cfbf",
       "labelFontSize": 12,
+      "titleColor": "#d6cfbf",
       "titleFontSize": 13,
       "titleFontWeight": "bold"
     },
@@ -19,23 +23,14 @@
       "orient": "top"
     },
     "view": {
-      "stroke": "transparent"
+      "stroke": "#d6cfbf",
+      "strokeWidth": 1
     }
   },
-  "width": "container",
+  "width": 760,
   "height": 330,
   "layer": [
     {
-      "data": {
-        "values": [
-          {
-            "start": 2022,
-            "end": 2023,
-            "bottom": 0,
-            "top": 7
-          }
-        ]
-      },
       "mark": {
         "type": "rect",
         "color": "#777777",
@@ -43,66 +38,55 @@
       },
       "encoding": {
         "x": {
-          "field": "start",
+          "datum": 2022,
           "type": "quantitative",
           "scale": {
             "domain": [2015, 2025]
-          },
-          "axis": null
+          }
         },
         "x2": {
-          "field": "end"
+          "datum": 2023
         },
         "y": {
-          "field": "bottom",
+          "datum": 0,
           "type": "quantitative",
           "scale": {
             "domain": [0, 7]
-          },
-          "axis": null
+          }
         },
         "y2": {
-          "field": "top"
+          "datum": 7
         }
       }
     },
     {
-      "data": {
-        "values": [
-          {
-            "Year": 2022.05,
-            "Rate": 6.75,
-            "Label": "2022-2023 Australia cost-of-living shock"
-          }
-        ]
-      },
       "mark": {
         "type": "text",
         "align": "left",
         "baseline": "top",
         "fontSize": 12,
         "fontWeight": "bold",
-        "color": "#d6cfbf"
+        "color": "#d6cfbf",
+        "dx": 5,
+        "dy": 5
       },
       "encoding": {
         "x": {
-          "field": "Year",
+          "datum": 2022,
           "type": "quantitative",
           "scale": {
             "domain": [2015, 2025]
-          },
-          "axis": null
+          }
         },
         "y": {
-          "field": "Rate",
+          "datum": 6.85,
           "type": "quantitative",
           "scale": {
             "domain": [0, 7]
-          },
-          "axis": null
+          }
         },
         "text": {
-          "field": "Label"
+          "value": "2022–2023 Australia cost-of-living shock"
         }
       }
     },
@@ -140,12 +124,23 @@
           "axis": {
             "title": "Year",
             "format": "d",
-            "values": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+            "values": [
+              2015,
+              2016,
+              2017,
+              2018,
+              2019,
+              2020,
+              2021,
+              2022,
+              2023,
+              2024,
+              2025
+            ],
             "labelAngle": 0,
-            "labelColor": "#d6cfbf",
-            "titleColor": "#d6cfbf",
-            "domainColor": "#d6cfbf",
-            "tickColor": "#d6cfbf",
+            "domain": true,
+            "ticks": true,
+            "labels": true,
             "grid": true
           }
         },
@@ -157,11 +152,19 @@
           },
           "axis": {
             "title": "Rate (%)",
-            "values": [0, 1, 2, 3, 4, 5, 6, 7],
-            "labelColor": "#d6cfbf",
-            "titleColor": "#d6cfbf",
-            "domainColor": "#d6cfbf",
-            "tickColor": "#d6cfbf",
+            "values": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "domain": true,
+            "ticks": true,
+            "labels": true,
             "grid": true
           }
         },
@@ -169,8 +172,14 @@
           "field": "Measure",
           "type": "nominal",
           "scale": {
-            "domain": ["WPI", "Inflation Rate (%)"],
-            "range": ["#009E73", "#D55E00"]
+            "domain": [
+              "WPI",
+              "Inflation Rate (%)"
+            ],
+            "range": [
+              "#009E73",
+              "#D55E00"
+            ]
           },
           "legend": {
             "title": "Measure"
