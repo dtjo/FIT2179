@@ -24,31 +24,11 @@
   "width": "container",
   "height": 330,
   "data": {
-    "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/inflation_100.csv"
-  },
-  "encoding": {
-    "x": {
-      "field": "Year",
-      "type": "quantitative",
-      "scale": {
-        "domain": [2015, 2025]
-      },
-      "axis": {
-        "format": "d",
-        "tickCount": 11,
-        "title": "Year",
-        "labelAngle": 0,
-        "labelColor": "#b9b3a5",
-        "titleColor": "#d6cfbf",
-        "domainColor": "#b9b3a5",
-        "tickColor": "#b9b3a5",
-        "labelPadding": 8,
-        "titlePadding": 12
-      }
-    }
+    "url": "data/inflation_100.csv"
   },
   "resolve": {
     "scale": {
+      "x": "shared",
       "y": "independent"
     }
   },
@@ -64,6 +44,23 @@
         }
       },
       "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "scale": {
+            "domain": [2015, 2025]
+          },
+          "axis": {
+            "format": "d",
+            "tickCount": 11,
+            "title": "Year",
+            "labelAngle": 0,
+            "labelColor": "#b9b3a5",
+            "titleColor": "#d6cfbf",
+            "domainColor": "#b9b3a5",
+            "tickColor": "#b9b3a5"
+          }
+        },
         "y": {
           "field": "Value of 100$",
           "type": "quantitative",
@@ -106,6 +103,14 @@
         "width": 22
       },
       "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "scale": {
+            "domain": [2015, 2025]
+          },
+          "axis": null
+        },
         "y": {
           "field": "Inflation Rate (%)",
           "type": "quantitative",
@@ -148,6 +153,14 @@
         "size": 65
       },
       "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "scale": {
+            "domain": [2015, 2025]
+          },
+          "axis": null
+        },
         "y": {
           "field": "Value of 100$",
           "type": "quantitative",
@@ -189,6 +202,14 @@
         "strokeWidth": 2
       },
       "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "scale": {
+            "domain": [2015, 2025]
+          },
+          "axis": null
+        },
         "y": {
           "field": "Value of 100$",
           "type": "quantitative",
