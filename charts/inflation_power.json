@@ -13,9 +13,7 @@
       "titleFontSize": 12
     },
     "legend": {
-      "labelColor": "#d6cfbf",
-      "titleColor": "#d6cfbf",
-      "orient": "top"
+      "disable": true
     },
     "view": {
       "stroke": "transparent"
@@ -33,14 +31,113 @@
   },
   "layer": [
     {
+      "data": {
+        "values": [
+          {
+            "start": 2020,
+            "end": 2021.5,
+            "event": "COVID-19 disruption"
+          }
+        ]
+      },
       "mark": {
-        "type": "area",
-        "color": "#e05c3a",
-        "opacity": 0.16,
-        "line": {
-          "color": "#e05c3a",
-          "strokeWidth": 3
+        "type": "rect",
+        "color": "#999999",
+        "opacity": 0.18
+      },
+      "encoding": {
+        "x": {
+          "field": "start",
+          "type": "quantitative"
+        },
+        "x2": {
+          "field": "end"
         }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2020.1,
+            "value": 103,
+            "event": "COVID-19 disruption"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#d6cfbf"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "value",
+          "type": "quantitative",
+          "scale": {
+            "domain": [65, 105]
+          },
+          "axis": null
+        },
+        "text": {
+          "field": "event"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#E69F00",
+        "opacity": 0.75,
+        "width": 22
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "axis": {
+            "format": "d",
+            "tickCount": 11,
+            "title": "Year"
+          }
+        },
+        "y": {
+          "field": "Inflation Rate (%)",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 8]
+          },
+          "axis": {
+            "title": "Inflation rate (%)",
+            "titleColor": "#E69F00"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "Inflation Rate (%)",
+            "title": "Inflation rate (%)",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color": "#0072B2",
+        "strokeWidth": 3
       },
       "encoding": {
         "x": {
@@ -56,29 +153,27 @@
           "field": "Value of 100$",
           "type": "quantitative",
           "scale": {
-            "domain": [
-              65,
-              105
-            ]
+            "domain": [65, 105]
           },
           "axis": {
             "title": "Real value of $100",
-            "titleColor": "#e05c3a"
+            "titleColor": "#0072B2"
           }
         },
         "tooltip": [
           {
             "field": "Year",
+            "title": "Year",
             "format": "d"
           },
           {
             "field": "Value of 100$",
-            "title": "Real value ($)",
+            "title": "Real value of $100",
             "format": ".2f"
           },
           {
             "field": "Inflation Rate (%)",
-            "title": "Inflation (%)",
+            "title": "Inflation rate (%)",
             "format": ".2f"
           }
         ]
@@ -86,10 +181,91 @@
     },
     {
       "mark": {
-        "type": "bar",
-        "color": "#e8c547",
-        "opacity": 0.8,
-        "width": 22
+        "type": "point",
+        "filled": true,
+        "color": "#0072B2",
+        "size": 70
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "Value of 100$",
+          "type": "quantitative",
+          "scale": {
+            "domain": [65, 105]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "Value of 100$",
+            "title": "Real value of $100",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Year": 2025,
+            "Value of 100$": 73.93,
+            "label": "Real value of $100"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 8,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#0072B2"
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "Value of 100$",
+          "type": "quantitative",
+          "scale": {
+            "domain": [65, 105]
+          }
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Year": 2025,
+            "Inflation Rate (%)": 3.8,
+            "label": "Inflation rate"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 8,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#E69F00"
       },
       "encoding": {
         "x": {
@@ -100,26 +276,12 @@
           "field": "Inflation Rate (%)",
           "type": "quantitative",
           "scale": {
-            "domain": [
-              0,
-              8
-            ]
-          },
-          "axis": {
-            "title": "Inflation rate (%)",
-            "titleColor": "#e8c547"
+            "domain": [0, 8]
           }
         },
-        "tooltip": [
-          {
-            "field": "Year",
-            "format": "d"
-          },
-          {
-            "field": "Inflation Rate (%)",
-            "format": ".2f"
-          }
-        ]
+        "text": {
+          "field": "label"
+        }
       }
     }
   ]
