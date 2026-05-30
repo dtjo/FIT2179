@@ -1,10 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 650,
+  "background": "transparent",
+  "width": 700,
   "height": 420,
-  "title": "Australia States Map",
   "projection": {
-    "type": "mercator"
+    "type": "mercator",
+    "center": [132, -28],
+    "scale": 650
   },
   "data": {
     "url": "data/australia_states.json",
@@ -13,10 +15,44 @@
       "feature": "STE_2016_AUST"
     }
   },
+  "transform": [
+    {
+      "lookup": "properties.STE_NAME16",
+      "from": {
+        "data": {
+          "url": "data/state_cpi.csv"
+        },
+        "key": "state",
+        "fields": ["CPI"]
+      }
+    }
+  ],
   "mark": {
     "type": "geoshape",
-    "fill": "#E6E6E6",
-    "stroke": "white",
-    "strokeWidth": 1
+    "stroke": "#0d0d0d",
+    "strokeWidth": 1.4
+  },
+  "encoding": {
+    "color": {
+      "field": "CPI",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "orangered"
+      },
+      "legend": {
+        "title": "CPI (%)"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "properties.STE_NAME16",
+        "title": "State"
+      },
+      {
+        "field": "CPI",
+        "title": "CPI (%)",
+        "format": ".1f"
+      }
+    ]
   }
 }
