@@ -32,6 +32,12 @@
   "data": {
     "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/inflation_100.csv"
   },
+  "transform": [
+    {
+      "calculate": "datum['Value of 100$']",
+      "as": "Real value"
+    }
+  ],
   "resolve": {
     "scale": {
       "y": "independent"
@@ -68,7 +74,7 @@
           }
         },
         "y": {
-          "field": "Value of 100$",
+          "field": "Real value",
           "type": "quantitative",
           "scale": {
             "domain": [0, 105]
@@ -89,13 +95,13 @@
             "format": "d"
           },
           {
-            "field": "Value of 100$",
-            "title": "Real value of $100",
+            "field": "Real value",
+            "title": "Real value",
             "format": ".2f"
           },
           {
             "field": "Inflation Rate (%)",
-            "title": "Inflation rate (%)",
+            "title": "Inflation rate",
             "format": ".2f"
           }
         ]
@@ -150,12 +156,12 @@
           },
           {
             "field": "Inflation Rate (%)",
-            "title": "Inflation rate (%)",
+            "title": "Inflation rate",
             "format": ".2f"
           },
           {
-            "field": "Value of 100$",
-            "title": "Real value of $100",
+            "field": "Real value",
+            "title": "Real value",
             "format": ".2f"
           }
         ]
@@ -174,14 +180,21 @@
           "type": "quantitative",
           "scale": {
             "domain": [2015, 2025]
+          },
+          "axis": {
+            "title": "Year",
+            "format": "d",
+            "values": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+            "labelAngle": 0
           }
         },
         "y": {
-          "field": "Value of 100$",
+          "field": "Real value",
           "type": "quantitative",
           "scale": {
             "domain": [0, 105]
-          }
+          },
+          "axis": null
         },
         "tooltip": [
           {
@@ -190,8 +203,8 @@
             "format": "d"
           },
           {
-            "field": "Value of 100$",
-            "title": "Real value of $100",
+            "field": "Real value",
+            "title": "Real value",
             "format": ".2f"
           }
         ]
@@ -202,12 +215,12 @@
         "values": [
           {
             "Year": 2020,
-            "Value of 100$": 92.37,
+            "Real value": 92.37,
             "Event": "2020 COVID-19 shock"
           },
           {
             "Year": 2022,
-            "Value of 100$": 83.81,
+            "Real value": 83.81,
             "Event": "2022 inflation surge"
           }
         ]
@@ -226,14 +239,21 @@
           "type": "quantitative",
           "scale": {
             "domain": [2015, 2025]
+          },
+          "axis": {
+            "title": "Year",
+            "format": "d",
+            "values": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+            "labelAngle": 0
           }
         },
         "y": {
-          "field": "Value of 100$",
+          "field": "Real value",
           "type": "quantitative",
           "scale": {
             "domain": [0, 105]
-          }
+          },
+          "axis": null
         },
         "shape": {
           "field": "Event",
@@ -263,8 +283,8 @@
             "format": "d"
           },
           {
-            "field": "Value of 100$",
-            "title": "Real value of $100",
+            "field": "Real value",
+            "title": "Real value",
             "format": ".2f"
           }
         ]
@@ -275,12 +295,12 @@
         "values": [
           {
             "Year": 2020.08,
-            "Value of 100$": 99,
+            "Real value": 99,
             "Label": "COVID-19 period"
           },
           {
             "Year": 2022.08,
-            "Value of 100$": 90,
+            "Real value": 90,
             "Label": "Inflation surge"
           }
         ]
@@ -300,14 +320,21 @@
           "type": "quantitative",
           "scale": {
             "domain": [2015, 2025]
+          },
+          "axis": {
+            "title": "Year",
+            "format": "d",
+            "values": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+            "labelAngle": 0
           }
         },
         "y": {
-          "field": "Value of 100$",
+          "field": "Real value",
           "type": "quantitative",
           "scale": {
             "domain": [0, 105]
-          }
+          },
+          "axis": null
         },
         "text": {
           "field": "Label"
