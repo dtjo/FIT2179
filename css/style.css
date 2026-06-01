@@ -71,18 +71,18 @@ a { color: inherit; }
 .section-layout-title-then-split .section-top { margin-bottom: 40px; }
 .section-layout-title-then-split .section-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 300px;
+  grid-template-columns: minmax(0, 1fr) 340px;
   gap: 48px;
-  align-items: center;
+  align-items: start;
 }
 
 /* ── LAYOUT: title top → [desc | card] ── */
 .section-layout-desc-left .section-top { margin-bottom: 40px; }
 .section-layout-desc-left .section-body {
   display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
+  grid-template-columns: 340px minmax(0, 1fr);
   gap: 48px;
-  align-items: center;
+  align-items: start;
 }
 
 .section-desc {
@@ -90,8 +90,21 @@ a { color: inherit; }
   font-size: 16px;
   font-weight: 300;
   line-height: 1.75;
-  align-self: center;
+  align-self: start;
 }
+
+/* ── SIDE STAT BLOCK (fills the column beside tall charts) ── */
+.side-stats { margin-top: 28px; display: flex; flex-direction: column; gap: 22px; }
+.side-stat { border-left: 2px solid var(--accent); padding-left: 16px; }
+.side-stat strong {
+  display: block;
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  font-size: clamp(30px, 3vw, 42px);
+  line-height: 1.05;
+  color: var(--orange);
+}
+.side-stat span { color: var(--muted); font-size: 13px; }
 
 /* ── CARDS ── */
 .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 30px; box-shadow: 0 18px 80px rgba(0,0,0,0.18); }
