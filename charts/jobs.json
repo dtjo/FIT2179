@@ -16,7 +16,7 @@
     "view": { "stroke": "transparent" }
   },
   "width": "container",
-  "height": 290,
+  "height": 320,
   "data": {
     "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/jobs.csv",
     "format": { "type": "csv", "parse": { "Date": "date:'%b-%y'" } }
@@ -42,28 +42,93 @@
   },
   "layer": [
     {
-      "mark": {
-        "type": "area",
-        "color": "#e05c3a",
-        "opacity": 0.14,
-        "clip": true
-      },
+      "mark": { "type": "area", "color": "#e05c3a", "opacity": 0.14, "clip": true },
+      "encoding": { "y2": { "datum": 5 } }
+    },
+    {
+      "mark": { "type": "line", "color": "#e05c3a", "strokeWidth": 2.5, "clip": true }
+    },
+    {
+      "mark": { "type": "point", "filled": true, "color": "#e05c3a", "size": 38, "clip": true },
       "encoding": {
-        "y2": { "datum": 5 }
+        "opacity": {
+          "condition": { "param": "hover", "value": 1 },
+          "value": 0.55
+        }
       }
     },
     {
-      "mark": {
-        "type": "line",
-        "color": "#e05c3a",
-        "strokeWidth": 2.5,
-        "clip": true
-      },
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "fields": ["Date"],
+            "nearest": true,
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": { "type": "rule", "color": "#d6cfbf", "strokeWidth": 1, "strokeDash": [3, 3] },
       "encoding": {
+        "opacity": {
+          "condition": { "param": "hover", "empty": false, "value": 0.7 },
+          "value": 0
+        },
         "tooltip": [
           { "field": "Date", "type": "temporal", "title": "Quarter", "format": "%b %Y" },
           { "field": "Multiple Job Holding Rate (%)", "title": "Rate (%)", "format": ".1f" }
         ]
+      }
+    },
+    {
+      "transform": [ { "filter": { "param": "hover", "empty": false } } ],
+      "mark": { "type": "point", "filled": true, "color": "#ffffff", "stroke": "#e05c3a", "strokeWidth": 2, "size": 110, "clip": true }
+    },
+    {
+      "transform": [ { "filter": { "param": "hover", "empty": false } } ],
+      "mark": { "type": "text", "align": "center", "dy": -16, "fontSize": 12, "fontWeight": "bold", "color": "#f0ece0" },
+      "encoding": {
+        "text": { "field": "Multiple Job Holding Rate (%)", "format": ".1f" }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          { "Date": "Jun-20", "rate": 5.1, "note": "COVID-19 low" },
+          { "Date": "Sep-24", "rate": 6.7, "note": "Highest on record" }
+        ]
+      },
+      "transform": [ { "calculate": "timeParse(datum.Date, '%b-%y')", "as": "Date" } ],
+      "mark": { "type": "point", "filled": true, "color": "#e8c547", "stroke": "#0d0d0d", "strokeWidth": 1.5, "size": 130 },
+      "encoding": {
+        "x": { "field": "Date", "type": "temporal" },
+        "y": { "field": "rate", "type": "quantitative" }
+      }
+    },
+    {
+      "data": {
+        "values": [ { "Date": "Jun-20", "rate": 5.1, "note": "COVID-19 low" } ]
+      },
+      "transform": [ { "calculate": "timeParse(datum.Date, '%b-%y')", "as": "Date" } ],
+      "mark": { "type": "text", "align": "center", "dy": 20, "fontSize": 11, "fontWeight": "bold", "color": "#e8c547" },
+      "encoding": {
+        "x": { "field": "Date", "type": "temporal" },
+        "y": { "field": "rate", "type": "quantitative" },
+        "text": { "field": "note" }
+      }
+    },
+    {
+      "data": {
+        "values": [ { "Date": "Sep-24", "rate": 6.7, "note": "Highest on record" } ]
+      },
+      "transform": [ { "calculate": "timeParse(datum.Date, '%b-%y')", "as": "Date" } ],
+      "mark": { "type": "text", "align": "center", "dy": -14, "fontSize": 11, "fontWeight": "bold", "color": "#e8c547" },
+      "encoding": {
+        "x": { "field": "Date", "type": "temporal" },
+        "y": { "field": "rate", "type": "quantitative" },
+        "text": { "field": "note" }
       }
     }
   ]
