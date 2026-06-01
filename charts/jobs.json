@@ -22,12 +22,8 @@
   },
   "transform": [
     {
-      "calculate": "parseInt(datum.Date.split('-')[1]) + (datum.Date.split('-')[0] === 'Mar' ? 0 : datum.Date.split('-')[0] === 'Jun' ? 1 : datum.Date.split('-')[0] === 'Sep' ? 2 : 3)",
-      "as": "quarter_sort"
-    },
-    {
-      "calculate": "parseInt('20' + datum.Date.split('-')[1]) * 4 + (datum.Date.split('-')[0] === 'Mar' ? 0 : datum.Date.split('-')[0] === 'Jun' ? 1 : datum.Date.split('-')[0] === 'Sep' ? 2 : 3)",
-      "as": "sort_key"
+      "calculate": "parseInt('20' + datum.Date.split('-')[1]) + (datum.Date.split('-')[0] === 'Mar' ? 0 : datum.Date.split('-')[0] === 'Jun' ? 0.25 : datum.Date.split('-')[0] === 'Sep' ? 0.5 : 0.75)",
+      "as": "year_frac"
     }
   ],
   "mark": {
@@ -39,12 +35,13 @@
   },
   "encoding": {
     "x": {
-      "field": "sort_key",
+      "field": "year_frac",
       "type": "quantitative",
+      "scale": { "domain": [2015, 2026] },
       "axis": {
-        "title": "Quarter",
-        "values": [60, 64, 68, 72, 76, 80, 84, 88, 92, 96, 100],
-        "labelExpr": "datum.value === 60 ? '2015' : datum.value === 64 ? '2016' : datum.value === 68 ? '2017' : datum.value === 72 ? '2018' : datum.value === 76 ? '2019' : datum.value === 80 ? '2020' : datum.value === 84 ? '2021' : datum.value === 88 ? '2022' : datum.value === 92 ? '2023' : datum.value === 96 ? '2024' : datum.value === 100 ? '2025' : ''",
+        "title": "Year",
+        "format": "d",
+        "values": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
         "grid": false,
         "labelAngle": 0
       }
