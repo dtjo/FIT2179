@@ -9,60 +9,55 @@
       "tickColor": "#393939",
       "labelColor": "#b9b3a5",
       "titleColor": "#d6cfbf",
-      "labelFontSize": 12,
+      "labelFontSize": 11,
       "titleFontSize": 12
     },
-    "legend": {
-      "labelColor": "#d6cfbf",
-      "titleColor": "#d6cfbf",
-      "orient": "top"
-    },
-    "view": {
-      "stroke": "transparent"
-    }
+    "legend": { "labelColor": "#d6cfbf", "titleColor": "#d6cfbf" },
+    "view": { "stroke": "transparent" }
   },
   "width": "container",
   "height": 290,
   "data": {
-    "url": "data/jobs.csv"
+    "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/jobs.csv"
   },
+  "transform": [
+    {
+      "calculate": "parseInt(datum.Date.split('-')[1]) + (datum.Date.split('-')[0] === 'Mar' ? 0 : datum.Date.split('-')[0] === 'Jun' ? 1 : datum.Date.split('-')[0] === 'Sep' ? 2 : 3)",
+      "as": "quarter_sort"
+    },
+    {
+      "calculate": "parseInt('20' + datum.Date.split('-')[1]) * 4 + (datum.Date.split('-')[0] === 'Mar' ? 0 : datum.Date.split('-')[0] === 'Jun' ? 1 : datum.Date.split('-')[0] === 'Sep' ? 2 : 3)",
+      "as": "sort_key"
+    }
+  ],
   "mark": {
     "type": "area",
     "color": "#e05c3a",
     "opacity": 0.14,
-    "line": {
-      "color": "#e05c3a",
-      "strokeWidth": 3
-    }
+    "line": { "color": "#e05c3a", "strokeWidth": 2.5 },
+    "interpolate": "monotone"
   },
   "encoding": {
     "x": {
-      "field": "Date",
-      "type": "ordinal",
+      "field": "sort_key",
+      "type": "quantitative",
       "axis": {
-        "labelAngle": -60,
-        "labelOverlap": true,
-        "title": "Quarter"
+        "title": "Quarter",
+        "values": [60, 64, 68, 72, 76, 80, 84, 88, 92, 96, 100],
+        "labelExpr": "datum.value === 60 ? '2015' : datum.value === 64 ? '2016' : datum.value === 68 ? '2017' : datum.value === 72 ? '2018' : datum.value === 76 ? '2019' : datum.value === 80 ? '2020' : datum.value === 84 ? '2021' : datum.value === 88 ? '2022' : datum.value === 92 ? '2023' : datum.value === 96 ? '2024' : datum.value === 100 ? '2025' : ''",
+        "grid": false,
+        "labelAngle": 0
       }
     },
     "y": {
       "field": "Multiple Job Holding Rate (%)",
       "type": "quantitative",
-      "scale": {
-        "zero": false
-      },
-      "axis": {
-        "title": "Multiple job holding rate (%)"
-      }
+      "scale": { "zero": false, "domain": [5, 7] },
+      "axis": { "title": "Multiple job holding rate (%)", "tickCount": 5 }
     },
     "tooltip": [
-      {
-        "field": "Date"
-      },
-      {
-        "field": "Multiple Job Holding Rate (%)",
-        "format": ".1f"
-      }
+      { "field": "Date", "title": "Quarter" },
+      { "field": "Multiple Job Holding Rate (%)", "title": "Rate (%)", "format": ".1f" }
     ]
   }
 }

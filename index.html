@@ -31,7 +31,7 @@
   <div class="line"></div>
 </div>
 
-<!-- 01·01 Inflation Power — LAYOUT: title top, card left, desc right (centred to card) -->
+<!-- 01·01 Inflation Power -->
 <section class="section section-layout-title-then-split fade-in">
   <div class="section-top">
     <div class="section-label">01 · 01</div>
@@ -42,7 +42,6 @@
       <div class="card-label">Inflation Rate and Real Value of $100</div>
       <div id="inflation-chart" class="viz"></div>
     </div>
-    <!-- CHANGE 2: desc beside chart, centred vertically, higher contrast colour -->
     <p class="section-desc">
       The year-to-year inflation rate looks small until the loss compounds over a decade.
       This chart pairs annual inflation with the shrinking real value of $100.
@@ -50,13 +49,12 @@
   </div>
 </section>
 
-<!-- 01·02 CPI — LAYOUT: title top, desc LEFT, card RIGHT -->
+<!-- 01·02 CPI -->
 <section class="section section-layout-desc-left fade-in">
   <div class="section-top">
     <div class="section-label">01 · 02</div>
     <h2 class="section-title">The CPI climbed steadily.</h2>
   </div>
-  <!-- CHANGE 3: columns are desc | card (reversed from section 01·01) -->
   <div class="section-body">
     <p class="section-desc">
       The Consumer Price Index tracks the price level of a broad basket of goods and services.
@@ -69,7 +67,7 @@
   </div>
 </section>
 
-<!-- 01·03 State Map — full-width card -->
+<!-- 01·03 State Map -->
 <section class="section section-layout-title-then-split fade-in">
   <div class="section-top">
     <div class="section-label">01 · 03</div>
@@ -82,18 +80,17 @@
     </div>
     <p class="section-desc">
       A map makes the regional pattern easier to compare. Use the tooltip to inspect
-      each state or territory. Colours use a colourblind-safe palette — darker means higher CPI.
+      each state or territory. Darker blue means higher CPI pressure.
     </p>
   </div>
 </section>
 
-<!-- 01·04 WPI vs Inflation — LAYOUT: title top, card left, desc right (same as 01·01) -->
+<!-- 01·04 WPI vs Inflation -->
 <section class="section section-layout-title-then-split fade-in">
   <div class="section-top">
     <div class="section-label">01 · 04</div>
     <h2 class="section-title">The real pain appears when wages lag prices.</h2>
   </div>
-  <!-- CHANGE 5: same layout as edited pic 2 — card left, desc centred right -->
   <div class="section-body">
     <div class="card">
       <div class="card-label">Wage Price Index versus Inflation</div>
@@ -115,30 +112,59 @@
   <div class="line"></div>
 </div>
 
-<!-- 02·01 Slider -->
+<!-- 02·01 Slider — two-column layout with fact panel -->
 <section class="section fade-in">
   <div class="section-label">02 · 01</div>
   <h2 class="section-title" style="margin-bottom:40px;">Drag to feel the erosion.</h2>
+
   <div class="slider-card">
-    <div class="slider-year" id="slider-year">2015</div>
-    <input type="range" class="year-slider" id="year-slider" min="0" max="10" value="0" step="1">
-    <div class="slider-scale"><span>2015</span><span>2025</span></div>
-    <div class="stats-row">
-      <div class="stat">
-        <div class="small-label">Real Value of $100</div>
-        <strong class="loss" id="slider-value">$100.00</strong>
+
+    <!-- LEFT: controls -->
+    <div class="slider-left">
+      <div class="slider-year" id="slider-year">2015</div>
+      <input type="range" class="year-slider" id="year-slider" min="0" max="10" value="0" step="1">
+      <div class="slider-scale"><span>2015</span><span>2025</span></div>
+
+      <div class="stats-row">
+        <div class="stat">
+          <div class="small-label">Real Value of $100</div>
+          <strong class="loss" id="slider-value">$100.00</strong>
+        </div>
+        <div class="stat">
+          <div class="small-label">Inflation Rate</div>
+          <strong id="slider-inflation">1.51%</strong>
+        </div>
+        <div class="stat">
+          <div class="small-label">Lost to Inflation</div>
+          <strong class="loss" id="slider-lost">$0.00</strong>
+        </div>
       </div>
-      <div class="stat">
-        <div class="small-label">Inflation Rate</div>
-        <strong id="slider-inflation">1.51%</strong>
+
+      <div class="icon-label">Each 🛒 = ~$4 of groceries</div>
+      <div class="icon-grid" id="icon-grid"></div>
+    </div>
+
+    <!-- RIGHT: fact panel -->
+    <div class="fact-panel">
+      <div class="fact-item">
+        <div class="fact-year">2015</div>
+        <div class="fact-text">"With $100, you could fill a trolley."</div>
+        <div class="fact-sub">~22 litres of full-cream milk · ~4 kg of chicken breast · a week of bread and eggs</div>
       </div>
-      <div class="stat">
-        <div class="small-label">Lost to Inflation</div>
-        <strong class="loss" id="slider-lost">$0.00</strong>
+      <div class="fact-divider"></div>
+      <div class="fact-item">
+        <div class="fact-year">2025</div>
+        <div class="fact-text">"The same trolley now costs $135."</div>
+        <div class="fact-sub">Milk up 34% · Chicken up 28% · Bread up 42% — your $100 runs out well before the checkout</div>
+      </div>
+      <div class="fact-divider"></div>
+      <div class="fact-item">
+        <div class="fact-year">The math</div>
+        <div class="fact-text">"$26.07 vanished — silently, annually."</div>
+        <div class="fact-sub">That's the equivalent of losing roughly one full grocery shop every four years, just to inflation</div>
       </div>
     </div>
-    <div class="small-label" style="margin-bottom:12px;">Each 🛒 = ~$4 of groceries</div>
-    <div class="icon-grid" id="icon-grid"></div>
+
   </div>
 </section>
 
