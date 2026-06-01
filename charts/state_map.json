@@ -8,51 +8,93 @@
     "center": [132, -28],
     "scale": 650
   },
-  "data": {
-    "url": "data/australia_states.json",
-    "format": {
-      "type": "topojson",
-      "feature": "STE_2016_AUST"
-    }
-  },
-  "transform": [
+  "layer": [
     {
-      "lookup": "properties.STE_NAME16",
-      "from": {
-        "data": {
-          "url": "data/state_cpi.csv"
-        },
-        "key": "state",
-        "fields": ["CPI"]
-      }
-    }
-  ],
-  "mark": {
-    "type": "geoshape",
-    "stroke": "#0d0d0d",
-    "strokeWidth": 1.4
-  },
-  "encoding": {
-    "color": {
-      "field": "CPI",
-      "type": "quantitative",
-      "scale": {
-        "scheme": "orangered"
+      "data": {
+        "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/australia_states.json",
+        "format": { "type": "topojson", "feature": "STE_2016_AUST" }
       },
-      "legend": {
-        "title": "CPI (%)"
+      "transform": [
+        {
+          "lookup": "properties.STE_NAME16",
+          "from": {
+            "data": { "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/state_cpi.csv" },
+            "key": "state",
+            "fields": ["CPI"]
+          }
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#0d0d0d",
+        "strokeWidth": 1.4
+      },
+      "encoding": {
+        "color": {
+          "field": "CPI",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "blues",
+            "domain": [4.0, 5.2]
+          },
+          "legend": {
+            "title": "CPI (%)",
+            "labelColor": "#d6cfbf",
+            "titleColor": "#d6cfbf"
+          }
+        },
+        "tooltip": [
+          { "field": "properties.STE_NAME16", "title": "State" },
+          { "field": "CPI", "title": "CPI (%)", "format": ".1f" }
+        ]
       }
     },
-    "tooltip": [
-      {
-        "field": "properties.STE_NAME16",
-        "title": "State"
+    {
+      "data": {
+        "values": [
+          { "abbr": "NSW",  "cpi": "4.4%", "lng": 146.0, "lat": -32.5 },
+          { "abbr": "VIC",  "cpi": "4.6%", "lng": 144.5, "lat": -37.0 },
+          { "abbr": "QLD",  "cpi": "4.7%", "lng": 145.0, "lat": -22.5 },
+          { "abbr": "SA",   "cpi": "4.9%", "lng": 135.5, "lat": -30.0 },
+          { "abbr": "WA",   "cpi": "4.6%", "lng": 121.5, "lat": -27.0 },
+          { "abbr": "TAS",  "cpi": "5.1%", "lng": 146.5, "lat": -42.2 },
+          { "abbr": "NT",   "cpi": "4.2%", "lng": 133.5, "lat": -19.5 },
+          { "abbr": "ACT",  "cpi": "4.2%", "lng": 149.1, "lat": -35.5 }
+        ]
       },
-      {
-        "field": "CPI",
-        "title": "CPI (%)",
-        "format": ".1f"
-      }
-    ]
-  }
+      "layer": [
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 11,
+            "fontWeight": "bold",
+            "color": "#e8c547",
+            "align": "center",
+            "baseline": "bottom",
+            "dy": -2
+          },
+          "encoding": {
+            "longitude": { "field": "lng", "type": "quantitative" },
+            "latitude":  { "field": "lat", "type": "quantitative" },
+            "text":      { "field": "abbr" }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 10,
+            "color": "#ffffff",
+            "align": "center",
+            "baseline": "top",
+            "dy": 2
+          },
+          "encoding": {
+            "longitude": { "field": "lng", "type": "quantitative" },
+            "latitude":  { "field": "lat", "type": "quantitative" },
+            "text":      { "field": "cpi" }
+          }
+        }
+      ]
+    }
+  ]
 }

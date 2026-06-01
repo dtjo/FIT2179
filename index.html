@@ -4,121 +4,248 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reality Check: $100 Across a Decade</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 <body>
-  <section class="hero">
-    <div class="eyebrow">Australia · 2015 to 2025 · A Decade of Inflation</div>
-    <h1>Your $100 is worth <em>less</em> than you think.</h1>
-    <p class="hero-sub">A data-driven look at how inflation eroded purchasing power, raised everyday costs, and changed the gap between wages, prices, and assets.</p>
-    <div class="hero-stat">
-      <strong>$73.93</strong>
-      <span>is what $100 from 2015 buys in real terms by 2025.</span>
+
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+<section class="hero">
+  <div class="eyebrow">Australia · 2015 to 2025 · A Decade of Inflation</div>
+  <h1>Your $100 is worth <em>less</em> than you think.</h1>
+  <p class="hero-sub">A data-driven look at how inflation eroded purchasing power, raised everyday costs, and changed the gap between wages, prices, and assets.</p>
+  <div class="hero-stat">
+    <strong>$73.93</strong>
+    <span>is what $100 from 2015 buys in real terms by 2025.</span>
+  </div>
+  <div class="scroll-hint">Scroll to explore</div>
+</section>
+
+<!-- ═══════════════════════════ CHAPTER 1 ═══════════════════════════ -->
+<div class="chapter">
+  <span>01</span>
+  <div class="line"></div>
+  <h2>The Big Picture: What Happened?</h2>
+  <div class="line"></div>
+</div>
+
+<!-- 01·01 Inflation Power — LAYOUT: title top, card left, desc right (centred to card) -->
+<section class="section section-layout-title-then-split fade-in">
+  <div class="section-top">
+    <div class="section-label">01 · 01</div>
+    <h2 class="section-title">$100 in 2015 became $73.93 in 2025.</h2>
+  </div>
+  <div class="section-body">
+    <div class="card">
+      <div class="card-label">Inflation Rate and Real Value of $100</div>
+      <div id="inflation-chart" class="viz"></div>
     </div>
-    <div class="scroll-hint">Scroll to explore</div>
-  </section>
+    <!-- CHANGE 2: desc beside chart, centred vertically, higher contrast colour -->
+    <p class="section-desc">
+      The year-to-year inflation rate looks small until the loss compounds over a decade.
+      This chart pairs annual inflation with the shrinking real value of $100.
+    </p>
+  </div>
+</section>
 
-  <div class="chapter"><span>01</span><div class="line"></div><h2>The big picture</h2><div class="line"></div></div>
-
-  <section class="section fade-in">
-    <div class="section-header">
-      <div><div class="section-label">01 · 01</div><h2 class="section-title">$100 in 2015 became $73.93 in 2025.</h2></div>
-      <p class="section-desc">The year-to-year inflation rate looks small until the loss compounds over a decade. This chart pairs annual inflation with the shrinking real value of $100.</p>
+<!-- 01·02 CPI — LAYOUT: title top, desc LEFT, card RIGHT -->
+<section class="section section-layout-desc-left fade-in">
+  <div class="section-top">
+    <div class="section-label">01 · 02</div>
+    <h2 class="section-title">The CPI climbed steadily.</h2>
+  </div>
+  <!-- CHANGE 3: columns are desc | card (reversed from section 01·01) -->
+  <div class="section-body">
+    <p class="section-desc">
+      The Consumer Price Index tracks the price level of a broad basket of goods and services.
+      A rising CPI means the same money buys less.
+    </p>
+    <div class="card">
+      <div class="card-label">Consumer Price Index, Australia</div>
+      <div id="cpi-chart" class="viz"></div>
     </div>
-    <div class="card wide-card"><div class="card-label">Inflation rate and real value of $100</div><div id="inflation-chart" class="viz"></div></div>
-  </section>
+  </div>
+</section>
 
-  <section class="section fade-in">
-    <div class="section-header">
-      <div><div class="section-label">01 · 02</div><h2 class="section-title">The CPI climbed steadily.</h2></div>
-      <p class="section-desc">The Consumer Price Index tracks the price level of a broad basket of goods and services. A rising CPI means the same money buys less.</p>
+<!-- 01·03 State Map — full-width card -->
+<section class="section section-layout-title-then-split fade-in">
+  <div class="section-top">
+    <div class="section-label">01 · 03</div>
+    <h2 class="section-title">Price pressure differs across states.</h2>
+  </div>
+  <div class="section-body">
+    <div class="card">
+      <!-- CHANGE 4: colourblind-safe viridis scheme + state CPI labels rendered in map.json -->
+      <div class="card-label">State CPI Comparison</div>
+      <div id="state_map" class="viz"></div>
     </div>
-    <div class="card"><div class="card-label">Consumer Price Index, Australia</div><div id="cpi-chart" class="viz"></div></div>
-  </section>
+    <p class="section-desc">
+      A map makes the regional pattern easier to compare. Use the tooltip to inspect
+      each state or territory. Colours use a colourblind-safe palette — darker means higher CPI.
+    </p>
+  </div>
+</section>
 
-  <section class="section fade-in">
-    <div class="section-header">
-      <div><div class="section-label">01 · 03</div><h2 class="section-title">Price pressure differs across states.</h2></div>
-      <p class="section-desc">A map makes the regional pattern easier to compare. Use the tooltip to inspect each state or territory.</p>
+<!-- 01·04 WPI vs Inflation — LAYOUT: title top, card left, desc right (same as 01·01) -->
+<section class="section section-layout-title-then-split fade-in">
+  <div class="section-top">
+    <div class="section-label">01 · 04</div>
+    <h2 class="section-title">The real pain appears when wages lag prices.</h2>
+  </div>
+  <!-- CHANGE 5: same layout as edited pic 2 — card left, desc centred right -->
+  <div class="section-body">
+    <div class="card">
+      <div class="card-label">Wage Price Index versus Inflation</div>
+      <div id="wpi-chart" class="viz"></div>
+      <div class="note">The shaded region marks the cost-of-living shock, where inflation rose much faster than wage growth.</div>
     </div>
-    <div class="card"><div class="card-label">State CPI comparison</div><div id="state_map" class="viz"></div></div>
-  </section>
+    <p class="section-desc">
+      When inflation rises faster than wage growth, real purchasing power falls.
+      The 2022 to 2023 period shows the clearest gap.
+    </p>
+  </div>
+</section>
 
-  <section class="section fade-in">
-    <div class="section-header">
-      <div><div class="section-label">01 · 04</div><h2 class="section-title">The real pain appears when wages lag prices.</h2></div>
-      <p class="section-desc">When inflation rises faster than wage growth, real purchasing power falls. The 2022 to 2023 period shows the clearest gap.</p>
-    </div>
-    <div class="card"><div class="card-label">Wage Price Index versus inflation</div><div id="wpi-chart" class="viz"></div><p class="note">The shaded region marks the cost-of-living shock, where inflation rose much faster than wage growth.</p></div>
-  </section>
+<!-- ═══════════════════════════ CHAPTER 2 ═══════════════════════════ -->
+<div class="chapter">
+  <span>02</span>
+  <div class="line"></div>
+  <h2>Something Specific, Something Relatable</h2>
+  <div class="line"></div>
+</div>
 
-  <div class="chapter"><span>02</span><div class="line"></div><h2>Everyday pressure</h2><div class="line"></div></div>
-
-  <section class="section fade-in">
-    <div class="section-header">
-      <div><div class="section-label">02 · 01</div><h2 class="section-title">Drag the year to feel the erosion.</h2></div>
-      <p class="section-desc">The slider turns the abstract idea of inflation into a simple purchasing-power comparison. Each basket represents roughly $4 of real value.</p>
-    </div>
-    <div class="slider-card">
-      <div id="slider-year" class="slider-year">2015</div>
-      <input id="year-slider" class="year-slider" type="range" min="0" max="10" value="0" step="1">
-      <div class="slider-scale"><span>2015</span><span>2025</span></div>
-      <div class="stats-row">
-        <div class="stat"><div class="small-label">Real value</div><strong class="loss" id="slider-value">$100.00</strong></div>
-        <div class="stat"><div class="small-label">Inflation rate</div><strong id="slider-inflation">1.51%</strong></div>
-        <div class="stat"><div class="small-label">Lost to inflation</div><strong class="loss" id="slider-lost">$0.00</strong></div>
+<!-- 02·01 Slider -->
+<section class="section fade-in">
+  <div class="section-label">02 · 01</div>
+  <h2 class="section-title" style="margin-bottom:40px;">Drag to feel the erosion.</h2>
+  <div class="slider-card">
+    <div class="slider-year" id="slider-year">2015</div>
+    <input type="range" class="year-slider" id="year-slider" min="0" max="10" value="0" step="1">
+    <div class="slider-scale"><span>2015</span><span>2025</span></div>
+    <div class="stats-row">
+      <div class="stat">
+        <div class="small-label">Real Value of $100</div>
+        <strong class="loss" id="slider-value">$100.00</strong>
       </div>
-      <div class="small-label" style="color:var(--dim);margin-bottom:12px;">Each basket = about $4</div>
-      <div id="icon-grid" class="icon-grid"></div>
+      <div class="stat">
+        <div class="small-label">Inflation Rate</div>
+        <strong id="slider-inflation">1.51%</strong>
+      </div>
+      <div class="stat">
+        <div class="small-label">Lost to Inflation</div>
+        <strong class="loss" id="slider-lost">$0.00</strong>
+      </div>
     </div>
-  </section>
+    <div class="small-label" style="margin-bottom:12px;">Each 🛒 = ~$4 of groceries</div>
+    <div class="icon-grid" id="icon-grid"></div>
+  </div>
+</section>
 
-  <section class="section fade-in">
-    <div class="section-header">
-      <div><div class="section-label">02 · 02</div><h2 class="section-title">Coffee became a visible example of everyday inflation.</h2></div>
-      <p class="section-desc">Comparing coffee growth against CPI shows that some familiar purchases can move more sharply than the headline index.</p>
+<!-- 02·02 Coffee vs CPI -->
+<section class="section section-layout-title-then-split fade-in">
+  <div class="section-top">
+    <div class="section-label">02 · 02</div>
+    <h2 class="section-title">Your daily coffee costs more than inflation suggests.</h2>
+  </div>
+  <div class="section-body">
+    <div class="card">
+      <div class="card-label">Annual CPI Growth vs Coffee Price Growth</div>
+      <div id="coffee-chart" class="viz"></div>
     </div>
-    <div class="card"><div class="card-label">CPI growth versus coffee price growth</div><div id="coffee-chart" class="viz"></div></div>
-  </section>
+    <p class="section-desc">
+      Coffee price growth has been volatile and frequently outpaced overall CPI —
+      a relatable microcosm of grocery inflation hitting everyday Australians.
+    </p>
+  </div>
+</section>
 
-  <section class="section fade-in">
-    <div class="section-header">
-      <div><div class="section-label">02 · 03</div><h2 class="section-title">Rent tells a different story in each city.</h2></div>
-      <p class="section-desc">Use the dropdown inside the chart to compare how each capital city moved relative to its 2015 rent level.</p>
+<!-- 02·03 Rent -->
+<section class="section section-layout-title-then-split fade-in">
+  <div class="section-top">
+    <div class="section-label">02 · 03</div>
+    <h2 class="section-title">Rent across Australia: a city-by-city story.</h2>
+  </div>
+  <div class="section-body">
+    <div class="card">
+      <div class="card-label">Adjusted Rent Index · Select a city</div>
+      <div id="rent-chart" class="viz"></div>
     </div>
-    <div class="card"><div class="card-label">Adjusted rent index, 2015 = 100</div><div id="rent-chart" class="viz"></div></div>
-  </section>
+    <p class="section-desc">
+      Use the dropdown to switch cities. Some markets surged with post-COVID migration;
+      others declined or stagnated. The dashed line marks the 2015 baseline.
+    </p>
+  </div>
+</section>
 
-  <div class="chapter"><span>03</span><div class="line"></div><h2>Assets and work</h2><div class="line"></div></div>
+<!-- ═══════════════════════════ CHAPTER 3 ═══════════════════════════ -->
+<div class="chapter">
+  <span>03</span>
+  <div class="line"></div>
+  <h2>Zooming In: The Economics Behind</h2>
+  <div class="line"></div>
+</div>
 
-  <section class="section fade-in">
-    <div class="section-header">
-      <div><div class="section-label">03 · 01</div><h2 class="section-title">The stock market outpaced the shopping basket.</h2></div>
-      <p class="section-desc">This indexed comparison shows why asset ownership matters in an inflationary decade.</p>
+<!-- 03·01 ASX vs CPI -->
+<section class="section section-layout-desc-left fade-in">
+  <div class="section-top">
+    <div class="section-label">03 · 01</div>
+    <h2 class="section-title">The stock market vs your shopping basket.</h2>
+  </div>
+  <div class="section-body">
+    <p class="section-desc">
+      ASX200 investors outpaced inflation significantly over the decade —
+      but not everyone has access to investment markets.
+    </p>
+    <div class="card">
+      <div class="card-label">ASX200 Annual Growth vs Inflation</div>
+      <div id="asx-chart" class="viz"></div>
     </div>
-    <div class="card"><div class="card-label">ASX200 versus CPI, indexed to 2015 = 100</div><div id="asx-chart" class="viz"></div></div>
-  </section>
+  </div>
+</section>
 
-  <section class="section fade-in">
-    <div class="section-header">
-      <div><div class="section-label">03 · 02</div><h2 class="section-title">Gold rose while cash lost real value.</h2></div>
-      <p class="section-desc">Gold is shown as an indexed asset comparison, while cash declines because inflation reduces purchasing power.</p>
+<!-- 03·02 Gold vs Cash -->
+<section class="section section-layout-title-then-split fade-in">
+  <div class="section-top">
+    <div class="section-label">03 · 02</div>
+    <h2 class="section-title">Gold wins. Cash quietly loses.</h2>
+  </div>
+  <div class="section-body">
+    <div class="card">
+      <div class="card-label">$100 Across the Decade: Gold vs Cash</div>
+      <div id="gold-chart" class="viz"></div>
     </div>
-    <div class="card"><div class="card-label">Gold versus cash</div><div id="gold-chart" class="viz"></div></div>
-  </section>
+    <p class="section-desc">
+      While cash erodes with inflation, gold has historically been a hedge —
+      growing over 150% in AUD terms since 2015.
+    </p>
+  </div>
+</section>
 
-  <section class="section fade-in">
-    <div class="section-header">
-      <div><div class="section-label">03 · 03</div><h2 class="section-title">More Australians are holding multiple jobs.</h2></div>
-      <p class="section-desc">The rise in multiple job holding gives a human signal of pressure beyond the price charts.</p>
+<!-- 03·03 Multiple Jobs -->
+<section class="section section-layout-desc-left fade-in">
+  <div class="section-top">
+    <div class="section-label">03 · 03</div>
+    <h2 class="section-title">More Australians are working multiple jobs.</h2>
+  </div>
+  <div class="section-body">
+    <p class="section-desc">
+      The multiple job holding rate has trended upward since 2020 —
+      a signal that one income increasingly isn't enough to keep pace with the cost of living.
+    </p>
+    <div class="card">
+      <div class="card-label">Multiple Job Holding Rate · Quarterly · 2015–2025</div>
+      <div id="jobs-chart" class="viz"></div>
     </div>
-    <div class="card"><div class="card-label">Multiple job holding rate</div><div id="jobs-chart" class="viz"></div></div>
-  </section>
+  </div>
+</section>
 
-  <footer><span>Data: ABS, RBA, World Gold Council · 2015 to 2025</span><span>FIT2179 · Vega-Lite data visualisation</span></footer>
-  <script src="js/main.js"></script>
+<footer>
+  <span>Data: ABS, RBA, World Gold Council · 2015–2025</span>
+  <span>FIT2179 · Data Visualisation</span>
+</footer>
+
+<script src="main.js"></script>
 </body>
 </html>
