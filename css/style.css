@@ -136,8 +136,8 @@ a { color: inherit; }
 .stat strong.loss { color: var(--orange); }
 
 .icon-label { color: var(--dim); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px; }
-.icon-grid { display: grid; grid-template-columns: repeat(13, 1fr); gap: 10px; width: 100%; }
-.icon-cell { aspect-ratio: 1 / 1; display: grid; place-items: center; border-radius: 10px; background: rgba(255,255,255,0.08); font-size: clamp(26px, 2.6vw, 38px); transition: opacity 0.3s; }
+.icon-grid { display: grid; grid-template-columns: repeat(13, 1fr); gap: 10px; width: 100%; max-width: 620px; }
+.icon-cell { aspect-ratio: 1 / 1; display: grid; place-items: center; border-radius: 9px; background: rgba(255,255,255,0.08); font-size: clamp(20px, 1.8vw, 26px); transition: opacity 0.3s; }
 .icon-cell.dead { background: rgba(224,92,58,0.12); opacity: 0.3; filter: grayscale(1); }
 
 /* ── FACT PANEL (right side of slider) ── */
