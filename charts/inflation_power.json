@@ -2,10 +2,10 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "background": "transparent",
   "padding": {
-    "left": 10,
-    "right": 20,
-    "top": 10,
-    "bottom": 50
+    "left": 4,
+    "right": 6,
+    "top": 4,
+    "bottom": 4
   },
   "config": {
     "font": "DM Sans",
@@ -24,11 +24,13 @@
       "orient": "top"
     },
     "view": {
-      "stroke": "transparent"
+      "stroke": "transparent",
+      "fill": "#0f1f2e",
+      "cornerRadius": 8
     }
   },
-  "width": 680,
-  "height": 310,
+  "width": "container",
+  "height": 460,
   "data": {
     "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/inflation_100.csv"
   },

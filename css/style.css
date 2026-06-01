@@ -107,9 +107,10 @@ a { color: inherit; }
 .side-stat span { color: var(--muted); font-size: 13px; }
 
 /* ── CARDS ── */
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 30px; box-shadow: 0 18px 80px rgba(0,0,0,0.18); }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 30px; box-shadow: 0 18px 80px rgba(0,0,0,0.18); display: flex; flex-direction: column; }
 .card-label { color: var(--dim); font-size: 11px; margin-bottom: 18px; }
-.viz { width: 100%; min-height: 260px; }
+.viz { width: 100%; min-height: 260px; flex: 1; }
+.viz .vega-embed, .viz canvas, .viz svg { width: 100% !important; }
 .note { margin-top: 18px; color: var(--muted); font-size: 14px; border-left: 2px solid var(--accent); padding: 10px 14px; background: rgba(232,197,71,0.07); }
 
 /* ── SLIDER ── */
