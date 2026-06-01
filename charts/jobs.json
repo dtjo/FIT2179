@@ -18,32 +18,19 @@
   "width": "container",
   "height": 290,
   "data": {
-    "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/jobs.csv"
-  },
-  "transform": [
-    {
-      "calculate": "parseInt('20' + datum.Date.split('-')[1]) + (datum.Date.split('-')[0] === 'Mar' ? 0 : datum.Date.split('-')[0] === 'Jun' ? 0.25 : datum.Date.split('-')[0] === 'Sep' ? 0.5 : 0.75)",
-      "as": "year_frac"
-    }
-  ],
-  "mark": {
-    "type": "area",
-    "color": "#e05c3a",
-    "opacity": 0.14,
-    "line": { "color": "#e05c3a", "strokeWidth": 2.5 },
-    "interpolate": "monotone"
+    "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/jobs.csv",
+    "format": { "type": "csv", "parse": { "Date": "date:'%b-%y'" } }
   },
   "encoding": {
     "x": {
-      "field": "year_frac",
-      "type": "quantitative",
-      "scale": { "domain": [2015, 2026] },
+      "field": "Date",
+      "type": "temporal",
       "axis": {
         "title": "Year",
-        "format": "d",
-        "values": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
-        "grid": false,
-        "labelAngle": 0
+        "format": "%Y",
+        "tickCount": "year",
+        "labelAngle": 0,
+        "grid": false
       }
     },
     "y": {
@@ -51,10 +38,33 @@
       "type": "quantitative",
       "scale": { "zero": false, "domain": [5, 7] },
       "axis": { "title": "Multiple job holding rate (%)", "tickCount": 5 }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "color": "#e05c3a",
+        "opacity": 0.14,
+        "clip": true
+      },
+      "encoding": {
+        "y2": { "datum": 5 }
+      }
     },
-    "tooltip": [
-      { "field": "Date", "title": "Quarter" },
-      { "field": "Multiple Job Holding Rate (%)", "title": "Rate (%)", "format": ".1f" }
-    ]
-  }
+    {
+      "mark": {
+        "type": "line",
+        "color": "#e05c3a",
+        "strokeWidth": 2.5,
+        "clip": true
+      },
+      "encoding": {
+        "tooltip": [
+          { "field": "Date", "type": "temporal", "title": "Quarter", "format": "%b %Y" },
+          { "field": "Multiple Job Holding Rate (%)", "title": "Rate (%)", "format": ".1f" }
+        ]
+      }
+    }
+  ]
 }
