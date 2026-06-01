@@ -139,7 +139,7 @@
           "field": "Inflation Rate (%)",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 8]
+            "domain": [0, 7.5]
           },
           "axis": {
             "title": "Inflation rate",
