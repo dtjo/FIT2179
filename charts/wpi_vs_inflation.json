@@ -33,15 +33,18 @@
     {
       "mark": {
         "type": "rect",
-        "color": "#777777",
-        "opacity": 0.16
+        "color": "#e05c3a",
+        "opacity": 0.1
       },
       "encoding": {
         "x": {
           "datum": 2022,
           "type": "quantitative",
           "scale": {
-            "domain": [2015, 2025]
+            "domain": [
+              2015,
+              2025
+            ]
           }
         },
         "x2": {
@@ -51,7 +54,10 @@
           "datum": 0,
           "type": "quantitative",
           "scale": {
-            "domain": [0, 7]
+            "domain": [
+              0,
+              7
+            ]
           }
         },
         "y2": {
@@ -75,18 +81,24 @@
           "datum": 2022,
           "type": "quantitative",
           "scale": {
-            "domain": [2015, 2025]
+            "domain": [
+              2015,
+              2025
+            ]
           }
         },
         "y": {
           "datum": 6.85,
           "type": "quantitative",
           "scale": {
-            "domain": [0, 7]
+            "domain": [
+              0,
+              7
+            ]
           }
         },
         "text": {
-          "value": "2022–2023 Australia cost-of-living shock"
+          "value": "2022\u20132023 Australia cost-of-living shock"
         }
       }
     },
@@ -119,7 +131,10 @@
           "field": "Year",
           "type": "quantitative",
           "scale": {
-            "domain": [2015, 2025]
+            "domain": [
+              2015,
+              2025
+            ]
           },
           "axis": {
             "title": "Year",
@@ -148,7 +163,10 @@
           "field": "Rate",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 7]
+            "domain": [
+              0,
+              7
+            ]
           },
           "axis": {
             "title": "Rate (%)",

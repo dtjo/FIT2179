@@ -1,26 +1,36 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "background": "transparent",
-  "width": 700,
-  "height": 420,
+  "width": "container",
+  "height": 380,
   "projection": {
     "type": "mercator",
-    "center": [132, -28],
-    "scale": 650
+    "center": [
+      132,
+      -28
+    ],
+    "scale": 720
   },
   "layer": [
     {
       "data": {
         "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/australia_states.json",
-        "format": { "type": "topojson", "feature": "STE_2016_AUST" }
+        "format": {
+          "type": "topojson",
+          "feature": "STE_2016_AUST"
+        }
       },
       "transform": [
         {
           "lookup": "properties.STE_NAME16",
           "from": {
-            "data": { "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/state_cpi.csv" },
+            "data": {
+              "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/state_cpi.csv"
+            },
             "key": "state",
-            "fields": ["CPI"]
+            "fields": [
+              "CPI"
+            ]
           }
         }
       ],
@@ -35,7 +45,10 @@
           "type": "quantitative",
           "scale": {
             "scheme": "blues",
-            "domain": [4.0, 5.2]
+            "domain": [
+              4.0,
+              5.2
+            ]
           },
           "legend": {
             "title": "CPI (%)",
@@ -44,22 +57,69 @@
           }
         },
         "tooltip": [
-          { "field": "properties.STE_NAME16", "title": "State" },
-          { "field": "CPI", "title": "CPI (%)", "format": ".1f" }
+          {
+            "field": "properties.STE_NAME16",
+            "title": "State"
+          },
+          {
+            "field": "CPI",
+            "title": "CPI (%)",
+            "format": ".1f"
+          }
         ]
       }
     },
     {
       "data": {
         "values": [
-          { "abbr": "NSW",  "cpi": "4.4%", "lng": 146.0, "lat": -32.5 },
-          { "abbr": "VIC",  "cpi": "4.6%", "lng": 144.5, "lat": -37.0 },
-          { "abbr": "QLD",  "cpi": "4.7%", "lng": 145.0, "lat": -22.5 },
-          { "abbr": "SA",   "cpi": "4.9%", "lng": 135.5, "lat": -30.0 },
-          { "abbr": "WA",   "cpi": "4.6%", "lng": 121.5, "lat": -27.0 },
-          { "abbr": "TAS",  "cpi": "5.1%", "lng": 146.5, "lat": -42.2 },
-          { "abbr": "NT",   "cpi": "4.2%", "lng": 133.5, "lat": -19.5 },
-          { "abbr": "ACT",  "cpi": "4.2%", "lng": 149.1, "lat": -35.5 }
+          {
+            "abbr": "NSW",
+            "cpi": "4.4%",
+            "lng": 146.0,
+            "lat": -32.5
+          },
+          {
+            "abbr": "VIC",
+            "cpi": "4.6%",
+            "lng": 144.5,
+            "lat": -37.0
+          },
+          {
+            "abbr": "QLD",
+            "cpi": "4.7%",
+            "lng": 145.0,
+            "lat": -22.5
+          },
+          {
+            "abbr": "SA",
+            "cpi": "4.9%",
+            "lng": 135.5,
+            "lat": -30.0
+          },
+          {
+            "abbr": "WA",
+            "cpi": "4.6%",
+            "lng": 121.5,
+            "lat": -27.0
+          },
+          {
+            "abbr": "TAS",
+            "cpi": "5.1%",
+            "lng": 146.5,
+            "lat": -42.2
+          },
+          {
+            "abbr": "NT",
+            "cpi": "4.2%",
+            "lng": 133.5,
+            "lat": -19.5
+          },
+          {
+            "abbr": "ACT",
+            "cpi": "4.2%",
+            "lng": 149.1,
+            "lat": -35.5
+          }
         ]
       },
       "layer": [
@@ -74,9 +134,17 @@
             "dy": -2
           },
           "encoding": {
-            "longitude": { "field": "lng", "type": "quantitative" },
-            "latitude":  { "field": "lat", "type": "quantitative" },
-            "text":      { "field": "abbr" }
+            "longitude": {
+              "field": "lng",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "abbr"
+            }
           }
         },
         {
@@ -89,9 +157,17 @@
             "dy": 2
           },
           "encoding": {
-            "longitude": { "field": "lng", "type": "quantitative" },
-            "latitude":  { "field": "lat", "type": "quantitative" },
-            "text":      { "field": "cpi" }
+            "longitude": {
+              "field": "lng",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "cpi"
+            }
           }
         }
       ]

@@ -4,7 +4,7 @@
   "config": {
     "font": "DM Sans",
     "axis": {
-      "gridColor": "#2b2b2b",
+      "gridColor": "#242424",
       "domainColor": "#393939",
       "tickColor": "#393939",
       "labelColor": "#b9b3a5",
@@ -42,11 +42,12 @@
     {
       "mark": {
         "type": "rule",
-        "color": "#777777",
+        "color": "#555555",
         "strokeDash": [
           4,
           4
-        ]
+        ],
+        "strokeWidth": 1
       },
       "encoding": {
         "y": {
@@ -61,7 +62,7 @@
         "strokeWidth": 3,
         "point": {
           "filled": true,
-          "size": 55
+          "size": 32
         }
       },
       "encoding": {
@@ -71,7 +72,8 @@
           "axis": {
             "format": "d",
             "tickCount": 11,
-            "title": "Year"
+            "title": "Year",
+            "grid": false
           }
         },
         "y": {

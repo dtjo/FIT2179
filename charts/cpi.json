@@ -22,7 +22,7 @@
     }
   },
   "width": "container",
-  "height": 300,
+  "height": 240,
   "data": {
     "url": "data/cpi.csv"
   },

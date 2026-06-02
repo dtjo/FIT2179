@@ -22,7 +22,7 @@
     }
   },
   "width": "container",
-  "height": 300,
+  "height": 340,
   "data": {
     "url": "data/coffee_cpi.csv"
   },
@@ -43,7 +43,7 @@
     "cornerRadiusTopLeft": 3,
     "cornerRadiusTopRight": 3,
     "width": {
-      "band": 0.45
+      "band": 0.8
     }
   },
   "encoding": {
