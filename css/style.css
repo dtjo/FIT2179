@@ -205,25 +205,74 @@ a { color: inherit; }
   margin-bottom: 56px;
 }
 
-/* ── FULL-WIDTH SECTION: chart on top, text + highlights below ── */
-.section-layout-full .section-top { margin-bottom: 36px; }
-.section-layout-full .card { margin-bottom: 36px; }
-.section-layout-full .viz { min-height: 380px; }
-.section-full-foot {
+/* ── RENT: three-panel interactive ── */
+.rent-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: 56px;
-  align-items: start;
+  grid-template-columns: 300px minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: stretch;
 }
-.section-full-foot.no-highlights { grid-template-columns: minmax(0, 760px); }
+.rent-panel { display: flex; flex-direction: column; }
+.rent-panel.card { padding: 24px; }
+.rent-panel .viz { min-height: 320px; }
 
-/* inline highlight row that sits beside the description */
-.highlight-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 18px;
-  align-self: start;
+.state-buttons { display: flex; flex-direction: column; gap: 8px; margin: 6px 0 28px; }
+.state-btn {
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+.state-btn:hover { border-color: var(--green); color: var(--text); }
+.state-btn .abbr { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--dim); }
+.state-btn.active {
+  background: rgba(76,175,125,0.14);
+  border-color: var(--green);
+  color: var(--text);
+}
+.state-btn.active .abbr { color: var(--green); }
+
+.state-info { border-top: 1px solid var(--border); padding-top: 22px; }
+.state-info-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(26px, 3vw, 34px);
+  color: var(--accent);
+  margin-bottom: 18px;
+  line-height: 1;
+}
+.state-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.state-info-row:last-child { border-bottom: none; }
+.state-info-label {
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 10px;
+  color: var(--dim);
+}
+.state-info-row strong {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: var(--text);
+}
+.state-info-row strong.up { color: var(--green); }
+.state-info-row strong.down { color: var(--orange); }
 
 /* ── HIGHLIGHT CARDS (logo + headline %) ── */
 .highlight-label {
@@ -280,13 +329,6 @@ a { color: inherit; }
   color: var(--muted);
 }
 
-/* compact highlight used inline beside descriptions */
-.highlight.compact { padding: 20px; }
-.highlight.compact .highlight-logo { width: 40px; height: 40px; margin-bottom: 12px; }
-.highlight.compact strong { font-size: clamp(30px, 3vw, 40px); }
-.highlight.compact .highlight-name { font-size: 14px; }
-.highlight.compact .highlight-sub { font-size: 12px; }
-
 /* ── FOOTER ── */
 footer { padding: 48px 8vw; color: var(--dim); font-family: 'DM Mono', monospace; font-size: 12px; display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
 
@@ -300,7 +342,8 @@ footer { padding: 48px 8vw; color: var(--dim); font-family: 'DM Mono', monospace
   .fact-panel { border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: 40px; }
   .lifestyle-charts { grid-template-columns: 1fr; }
   .highlight-grid { grid-template-columns: repeat(2, 1fr); }
-  .section-full-foot { grid-template-columns: 1fr; gap: 32px; }
+  .rent-grid { grid-template-columns: 1fr; }
+  .state-buttons { display: grid; grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 900px) {
   .section-layout-title-then-split .section-body,
