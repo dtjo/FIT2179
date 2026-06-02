@@ -1,0 +1,61 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "config": {
+    "font": "DM Sans",
+    "axis": {
+      "gridColor": "#2b2b2b",
+      "domainColor": "#393939",
+      "tickColor": "#393939",
+      "labelColor": "#b9b3a5",
+      "titleColor": "#d6cfbf",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": { "labelColor": "#d6cfbf", "titleColor": "#d6cfbf", "orient": "top" },
+    "view": { "stroke": "transparent" }
+  },
+  "width": "container",
+  "height": 340,
+  "data": { "url": "data/big_mac_clean.csv" },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "quantitative",
+      "scale": { "domain": [2014.5, 2025.5] },
+      "axis": { "title": "Year", "format": "d", "values": [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025], "labelAngle": 0, "grid": false }
+    },
+    "y": {
+      "field": "Price_AUD",
+      "type": "quantitative",
+      "scale": { "zero": true, "domain": [0, 9] },
+      "axis": { "title": "Big Mac price (AUD)", "format": "$.2f" }
+    }
+  },
+  "layer": [
+    {
+      "mark": { "type": "rule", "color": "#e05c3a", "strokeWidth": 2, "opacity": 0.45 },
+      "encoding": { "y2": { "datum": 0 } }
+    },
+    {
+      "mark": { "type": "line", "color": "#e8c547", "strokeWidth": 2, "opacity": 0.55, "interpolate": "monotone" }
+    },
+    {
+      "mark": { "type": "point", "filled": true, "color": "#e8c547", "size": 230, "stroke": "#0d0d0d", "strokeWidth": 1.5 },
+      "encoding": {
+        "tooltip": [
+          { "field": "Year", "type": "quantitative", "title": "Year", "format": "d" },
+          { "field": "Price_AUD", "type": "quantitative", "title": "Price (AUD)", "format": "$.2f" },
+          { "field": "Price_USD", "type": "quantitative", "title": "Price (USD)", "format": "$.2f" }
+        ]
+      }
+    },
+    {
+      "transform": [ { "filter": "datum.Year == 2015 || datum.Year == 2025" } ],
+      "mark": { "type": "text", "align": "center", "dy": -22, "fontSize": 13, "fontWeight": "bold", "color": "#f0ece0" },
+      "encoding": {
+        "text": { "field": "Price_AUD", "type": "quantitative", "format": "$.2f" }
+      }
+    }
+  ]
+}

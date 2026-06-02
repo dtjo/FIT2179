@@ -1,0 +1,201 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "config": {
+    "font": "DM Sans",
+    "axis": {
+      "gridColor": "#2b2b2b",
+      "domainColor": "#393939",
+      "tickColor": "#393939",
+      "labelColor": "#b9b3a5",
+      "titleColor": "#d6cfbf",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#d6cfbf",
+      "titleColor": "#d6cfbf",
+      "orient": "top"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  },
+  "width": "container",
+  "height": 360,
+  "data": {
+    "url": "data/entertainment_clean.csv"
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          2015,
+          2026
+        ]
+      },
+      "axis": {
+        "title": "Year",
+        "format": "d",
+        "values": [
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "labelAngle": 0,
+        "grid": false
+      }
+    },
+    "y": {
+      "field": "Price",
+      "type": "quantitative",
+      "scale": {
+        "zero": false,
+        "domain": [
+          8,
+          22
+        ]
+      },
+      "axis": {
+        "title": "Monthly price (AUD)",
+        "format": "$d"
+      }
+    },
+    "color": {
+      "field": "Service",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Netflix",
+          "Disney+",
+          "Stan"
+        ],
+        "range": [
+          "#e50914",
+          "#4a9eff",
+          "#16b8a6"
+        ]
+      },
+      "legend": null
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "interpolate": "monotone",
+        "clip": true
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 55,
+        "clip": true
+      },
+      "encoding": {
+        "opacity": {
+          "condition": {
+            "param": "hoverline",
+            "value": 1
+          },
+          "value": 0.65
+        }
+      }
+    },
+    {
+      "params": [
+        {
+          "name": "hoverline",
+          "select": {
+            "type": "point",
+            "fields": [
+              "Year"
+            ],
+            "nearest": true,
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "color": "#d6cfbf",
+        "strokeWidth": 1,
+        "strokeDash": [
+          3,
+          3
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative"
+        },
+        "opacity": {
+          "condition": {
+            "param": "hoverline",
+            "empty": false,
+            "value": 0.6
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "type": "quantitative",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "Service",
+            "type": "nominal",
+            "title": "Service"
+          },
+          {
+            "field": "Price",
+            "type": "quantitative",
+            "title": "Price/mo",
+            "format": "$.2f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Year == 2025"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "clip": false
+      },
+      "encoding": {
+        "text": {
+          "field": "Service"
+        },
+        "color": {
+          "field": "Service",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}
