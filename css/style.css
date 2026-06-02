@@ -242,7 +242,14 @@ a { color: inherit; }
 }
 .state-btn.active .abbr { color: var(--green); }
 
-.state-info { border-top: 1px solid var(--border); padding-top: 22px; }
+/* info block fills the remaining height so the left column bottom aligns with the cards */
+.state-info {
+  border-top: 1px solid var(--border);
+  padding-top: 22px;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+}
 .state-info-name {
   font-family: 'DM Serif Display', serif;
   font-size: clamp(26px, 3vw, 34px);
@@ -250,11 +257,12 @@ a { color: inherit; }
   margin-bottom: 18px;
   line-height: 1;
 }
+.state-info-rows { display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
 .state-info-row {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 10px 0;
+  padding: 16px 0;
   border-bottom: 1px solid var(--border);
 }
 .state-info-row:last-child { border-bottom: none; }

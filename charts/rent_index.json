@@ -17,7 +17,7 @@
   },
   "width": "container",
   "height": 320,
-  "data": { "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/adjusted_rent.csv" },
+  "data": { "url": "data/adjusted_rent.csv" },
   "params": [
     { "name": "Selected_city", "value": "Sydney" }
   ],

@@ -2,8 +2,8 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "background": "transparent",
   "width": "container",
-  "height": 320,
-  "projection": { "type": "mercator", "center": [134, -28], "scale": 460 },
+  "height": 400,
+  "projection": { "type": "mercator", "center": [134, -28], "scale": 540 },
   "params": [
     { "name": "selectedState", "value": "New South Wales" },
     {
