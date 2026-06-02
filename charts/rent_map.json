@@ -7,9 +7,9 @@
     "type": "mercator",
     "center": [
       134,
-      -28
+      -27
     ],
-    "scale": 540
+    "scale": 460
   },
   "params": [
     {
