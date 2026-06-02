@@ -210,11 +210,13 @@ a { color: inherit; }
   display: grid;
   grid-template-columns: 300px minmax(0, 1.4fr) minmax(0, 1fr);
   gap: 24px;
-  align-items: stretch;
+  align-items: start;
 }
 .rent-panel { display: flex; flex-direction: column; }
 .rent-panel.card { padding: 24px; }
-.rent-panel .viz { min-height: 320px; }
+.rent-panel .viz { min-height: 0; flex: none; }
+#rent-chart { min-height: 360px; }
+#rent-map { min-height: 420px; }
 
 .state-buttons { display: flex; flex-direction: column; gap: 8px; margin: 6px 0 28px; }
 .state-btn {
@@ -242,13 +244,10 @@ a { color: inherit; }
 }
 .state-btn.active .abbr { color: var(--green); }
 
-/* info block fills the remaining height so the left column bottom aligns with the cards */
+/* info block flows naturally below the buttons */
 .state-info {
   border-top: 1px solid var(--border);
   padding-top: 22px;
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
 }
 .state-info-name {
   font-family: 'DM Serif Display', serif;
@@ -257,12 +256,12 @@ a { color: inherit; }
   margin-bottom: 18px;
   line-height: 1;
 }
-.state-info-rows { display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
+.state-info-rows { display: flex; flex-direction: column; }
 .state-info-row {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 16px 0;
+  padding: 14px 0;
   border-bottom: 1px solid var(--border);
 }
 .state-info-row:last-child { border-bottom: none; }
