@@ -24,7 +24,7 @@
   "width": "container",
   "height": 360,
   "data": {
-    "url": "data/entertainment_clean.csv"
+    "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/entertainment.csv"
   },
   "encoding": {
     "x": {

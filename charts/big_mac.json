@@ -17,7 +17,7 @@
   },
   "width": "container",
   "height": 340,
-  "data": { "url": "data/big_mac_clean.csv" },
+  "data": { "url": "https://raw.githubusercontent.com/dtjo/FIT2179/main/data/big_mac.csv" },
   "encoding": {
     "x": {
       "field": "Year",
