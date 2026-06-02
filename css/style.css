@@ -90,8 +90,34 @@ a { color: inherit; }
   font-size: 16px;
   font-weight: 300;
   line-height: 1.75;
-  align-self: start;
+  align-self: center;
 }
+
+/* ── EXPLAINER BLOCK (term + definition, fills empty column space) ── */
+.explainer {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.explain-item { border-left: 2px solid var(--green); padding-left: 18px; display: flex; flex-direction: column; }
+.explain-term {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 11px;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.explain-def {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+.explain-def strong { color: var(--text); font-weight: 500; }
 
 /* ── SIDE STAT BLOCK (fills the column beside tall charts) ── */
 .side-stats { margin-top: 28px; display: flex; flex-direction: column; gap: 22px; }
@@ -210,13 +236,14 @@ a { color: inherit; }
   display: grid;
   grid-template-columns: 300px minmax(0, 1.4fr) minmax(0, 1fr);
   gap: 24px;
-  align-items: start;
+  align-items: stretch;
 }
 .rent-panel { display: flex; flex-direction: column; }
 .rent-panel.card { padding: 24px; }
-.rent-panel .viz { min-height: 0; flex: none; }
-#rent-chart { min-height: 360px; }
-#rent-map { min-height: 420px; }
+.rent-panel .viz { width: 100%; flex: 1; min-height: 0; display: flex; align-items: center; }
+.rent-panel .viz > * { width: 100%; }
+#rent-chart { min-height: 380px; }
+#rent-map { min-height: 380px; }
 
 /* state dropdown */
 .state-select {
