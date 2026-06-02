@@ -9,7 +9,9 @@ const chartList = [
   ['#rent-chart', 'charts/rent_index.json'],
   ['#asx-chart', 'charts/asx_vs_cpi.json'],
   ['#gold-chart', 'charts/gold_vs_cash.json'],
-  ['#jobs-chart', 'charts/jobs.json']
+  ['#jobs-chart', 'charts/jobs.json'],
+  ['#entertainment-chart', 'charts/entertainment.json'],
+  ['#bigmac-chart', 'charts/big_mac.json']
 ];
 
 for (const [target, spec] of chartList) {

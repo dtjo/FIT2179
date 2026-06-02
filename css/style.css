@@ -197,6 +197,69 @@ a { color: inherit; }
   background: var(--border);
 }
 
+/* ── LIFESTYLE: two-chart row ── */
+.lifestyle-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 56px;
+}
+
+/* ── HIGHLIGHT CARDS (logo + headline %) ── */
+.highlight-label {
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  font-size: 11px;
+  margin-bottom: 20px;
+}
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.highlight:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.35);
+}
+.highlight-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+}
+.highlight strong {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  font-size: clamp(38px, 4vw, 52px);
+  line-height: 1;
+  color: var(--orange);
+}
+.highlight-name {
+  margin-top: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text);
+}
+.highlight-sub {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
 /* ── FOOTER ── */
 footer { padding: 48px 8vw; color: var(--dim); font-family: 'DM Mono', monospace; font-size: 12px; display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
 
@@ -208,6 +271,8 @@ footer { padding: 48px 8vw; color: var(--dim); font-family: 'DM Mono', monospace
 @media (max-width: 1040px) {
   .slider-card { grid-template-columns: 1fr; }
   .fact-panel { border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: 40px; }
+  .lifestyle-charts { grid-template-columns: 1fr; }
+  .highlight-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 900px) {
   .section-layout-title-then-split .section-body,
