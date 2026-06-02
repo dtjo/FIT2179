@@ -94,7 +94,7 @@ const NAME_TO_STATE = {
 };
 
 const rentEls = {
-  buttons: document.getElementById('state-buttons'),
+  select: document.getElementById('state-select'),
   name: document.getElementById('info-name'),
   rent: document.getElementById('info-rent'),
   change: document.getElementById('info-change'),
@@ -131,15 +131,15 @@ function computeRentInfo(city) {
   return { latest: lastVal, change: pct, year: maxYear };
 }
 
-function renderButtons() {
-  rentEls.buttons.innerHTML = '';
+function renderDropdown() {
+  rentEls.select.innerHTML = '';
   STATES.forEach(s => {
-    const btn = document.createElement('button');
-    btn.className = 'state-btn' + (s.abbr === currentAbbr ? ' active' : '');
-    btn.innerHTML = `<span>${s.name}</span><span class="abbr">${s.abbr}</span>`;
-    btn.addEventListener('click', () => selectState(s.abbr, 'button'));
-    rentEls.buttons.appendChild(btn);
+    const opt = document.createElement('option');
+    opt.value = s.abbr;
+    opt.textContent = `${s.name} (${s.abbr})`;
+    rentEls.select.appendChild(opt);
   });
+  rentEls.select.addEventListener('change', e => selectState(e.target.value, 'dropdown'));
 }
 
 function updateInfo(state) {
@@ -164,11 +164,8 @@ function selectState(abbr, source) {
   if (!state) return;
   currentAbbr = abbr;
 
-  // 1. buttons
-  document.querySelectorAll('.state-btn').forEach(b => {
-    const isActive = b.querySelector('.abbr').textContent === abbr;
-    b.classList.toggle('active', isActive);
-  });
+  // 1. dropdown (keep in sync, including when a map click drives the change)
+  if (rentEls.select.value !== abbr) rentEls.select.value = abbr;
 
   // 2. info panel
   updateInfo(state);
@@ -185,7 +182,7 @@ function selectState(abbr, source) {
 }
 
 async function initRentPanels() {
-  renderButtons();
+  renderDropdown();
 
   // Fetch the rent CSV so the info panel shows real numbers
   try {
