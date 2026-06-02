@@ -73,7 +73,7 @@
 </section>
 
 <!-- 01·02 CPI -->
-<section class="section section-layout-desc-left fade-in">
+<section class="section section-layout-desc-left wide-desc fade-in">
   <div class="section-top">
     <div class="section-label">01 · 02</div>
     <h2 class="section-title">The CPI climbed steadily.</h2>
@@ -116,35 +116,40 @@
 </section>
 
 <!-- 01·03 State Map -->
-<section class="section section-layout-title-then-split fade-in">
-  <div class="section-top">
-    <div class="section-label">01 · 03</div>
-    <h2 class="section-title">Price pressure differs across states.</h2>
-  </div>
-  <div class="section-body">
-    <div class="card">
-      <div class="card-label">State CPI Comparison</div>
+<section class="section fade-in">
+  <div class="section-label">01 · 03</div>
+  <h2 class="section-title" style="margin-bottom:14px;">Price pressure differs across states.</h2>
+  <p class="section-desc" style="max-width:760px;margin-bottom:40px;text-align:justify;">
+    Inflation is national news, but it isn't felt evenly. A renter in Hobart and a family in
+    Darwin lived through very different price stories this past year. Mapping each state's CPI
+    side by side turns an abstract national figure into something regional and concrete —
+    darker blue means a heavier squeeze on local budgets.
+  </p>
+
+  <div class="map-row">
+    <div class="card map-card">
+      <div class="card-label">State CPI Comparison · annual % change</div>
       <div id="state_map" class="viz"></div>
     </div>
-    <p class="section-desc">
-      Inflation hit every state, but not evenly. Hover any region to inspect it — darker
-      blue means higher CPI pressure.
-      <span class="factstrip cols-2" style="margin-top:24px;">
-        <span class="fact-card">
-          <span class="big orange">5.1%</span>
-          <span class="lbl">Tasmania — the highest CPI in the country</span>
-        </span>
-        <span class="fact-card">
-          <span class="big green">4.2%</span>
-          <span class="lbl">NT &amp; ACT — the lowest, tied</span>
-        </span>
-      </span>
-      <span class="pill-row">
-        <span class="pill">spread <b>0.9 pts</b></span>
-        <span class="pill">highest <b class="orange">TAS</b></span>
-        <span class="pill">lowest <b class="green">NT/ACT</b></span>
-      </span>
-    </p>
+    <div class="map-side">
+      <div class="highlight-label">Where it hit hardest</div>
+      <div class="rank-card high">
+        <div class="rank-tag">Highest</div>
+        <div class="rank-val">5.1%</div>
+        <div class="rank-name">Tasmania</div>
+        <div class="rank-sub">Small, tight rental market — prices rose fastest in the country.</div>
+      </div>
+      <div class="rank-card low">
+        <div class="rank-tag">Lowest</div>
+        <div class="rank-val">4.2%</div>
+        <div class="rank-name">NT &amp; ACT</div>
+        <div class="rank-sub">Tied for the gentlest rise — still well above the RBA's 2–3% target.</div>
+      </div>
+      <div class="pill-row">
+        <span class="pill">national spread <b>0.9 pts</b></span>
+        <span class="pill">every state <b class="orange">above target</b></span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -263,34 +268,43 @@
       <div id="coffee-chart" class="viz"></div>
     </div>
     <p class="section-desc">
-      Your morning flat white is a tiny inflation gauge of its own. Some years coffee barely
-      moved; in others it jumped far past the headline CPI — and unlike the index, you pay it
-      every single day.
+      The CPI is an <em>average</em> across hundreds of items, so any single one can hide inside
+      it. Coffee is the perfect test: a small, frequent purchase almost everyone makes. Tracking
+      it against the headline CPI shows how a familiar everyday price can run well ahead of the
+      "official" rate of inflation.
       <span class="explainer">
+        <span class="explain-item">
+          <span class="explain-term">Why coffee vs CPI?</span>
+          <span class="explain-def">CPI is the <strong>whole basket averaged</strong>; coffee is <strong>one lived item</strong>. When the orange bars top the yellow, your daily cup rose faster than inflation overall.</span>
+        </span>
         <span class="explain-item">
           <span class="explain-term">Why it bites harder</span>
           <span class="explain-def">A 50¢ rise on a <strong>daily</strong> coffee is about <strong>$180 a year</strong> — small per cup, large per habit.</span>
         </span>
       </span>
-      <span class="factstrip cols-2">
-        <span class="fact-card">
-          <span class="big">☕ $3.50</span>
-          <span class="lbl">typical flat white, 2015</span>
-        </span>
-        <span class="fact-card">
-          <span class="big orange">☕ $5.50+</span>
-          <span class="lbl">common by 2025 in the cities</span>
-        </span>
-        <span class="fact-card">
-          <span class="big green">2022</span>
-          <span class="lbl">the year bean prices spiked hardest</span>
-        </span>
-        <span class="fact-card">
-          <span class="big">~$1.3k</span>
-          <span class="lbl">a year if you buy one every workday</span>
-        </span>
-      </span>
     </p>
+  </div>
+
+  <!-- 2015 → 2025 coffee price comparison -->
+  <div class="highlight-label" style="margin-top:48px;">One cup, ten years apart</div>
+  <div class="coffee-compare">
+    <div class="coffee-card">
+      <svg class="coffee-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+      <div class="coffee-year">2015</div>
+      <div class="coffee-price">$3.50</div>
+      <div class="coffee-note">a typical café flat white</div>
+    </div>
+    <div class="coffee-arrow">→</div>
+    <div class="coffee-card hot">
+      <svg class="coffee-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+      <div class="coffee-year">2025</div>
+      <div class="coffee-price">$5.50+</div>
+      <div class="coffee-note">same cup, city café</div>
+    </div>
+    <div class="coffee-verdict">
+      <strong>+57%</strong>
+      <span>roughly double the ~26% rise in the broad CPI over the same decade — about <strong style="color:var(--accent)">$1.3k a year</strong> for a workday habit.</span>
+    </div>
   </div>
 </section>
 
