@@ -205,6 +205,26 @@ a { color: inherit; }
   margin-bottom: 56px;
 }
 
+/* ── FULL-WIDTH SECTION: chart on top, text + highlights below ── */
+.section-layout-full .section-top { margin-bottom: 36px; }
+.section-layout-full .card { margin-bottom: 36px; }
+.section-layout-full .viz { min-height: 380px; }
+.section-full-foot {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+.section-full-foot.no-highlights { grid-template-columns: minmax(0, 760px); }
+
+/* inline highlight row that sits beside the description */
+.highlight-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 18px;
+  align-self: start;
+}
+
 /* ── HIGHLIGHT CARDS (logo + headline %) ── */
 .highlight-label {
   font-family: 'DM Mono', monospace;
@@ -260,6 +280,13 @@ a { color: inherit; }
   color: var(--muted);
 }
 
+/* compact highlight used inline beside descriptions */
+.highlight.compact { padding: 20px; }
+.highlight.compact .highlight-logo { width: 40px; height: 40px; margin-bottom: 12px; }
+.highlight.compact strong { font-size: clamp(30px, 3vw, 40px); }
+.highlight.compact .highlight-name { font-size: 14px; }
+.highlight.compact .highlight-sub { font-size: 12px; }
+
 /* ── FOOTER ── */
 footer { padding: 48px 8vw; color: var(--dim); font-family: 'DM Mono', monospace; font-size: 12px; display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
 
@@ -273,6 +300,7 @@ footer { padding: 48px 8vw; color: var(--dim); font-family: 'DM Mono', monospace
   .fact-panel { border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: 40px; }
   .lifestyle-charts { grid-template-columns: 1fr; }
   .highlight-grid { grid-template-columns: repeat(2, 1fr); }
+  .section-full-foot { grid-template-columns: 1fr; gap: 32px; }
 }
 @media (max-width: 900px) {
   .section-layout-title-then-split .section-body,
